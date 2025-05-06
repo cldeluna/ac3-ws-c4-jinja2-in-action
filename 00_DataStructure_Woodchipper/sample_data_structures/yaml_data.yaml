@@ -1,0 +1,16 @@
+# This is a YAML file with two variables
+# The entire file is a dictionary
+# The first key is "fruits" and its value is a list of fruits
+# The second key  is "personal_info" and its value is a dictionary with three keys "name", "age", and "occupation"
+
+# List of fruits
+fruits:
+  - apple
+  - banana
+  - cherry
+
+# Personal information
+personal_info:
+  name: Rupert Pupkin
+  age: 30
+  occupation: Developer

@@ -1,0 +1,84 @@
+'2315098':
+  est_max_diameter_m: 2667.1041722442
+  id: '2315098'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=2315098
+  name: 315098 (2007 EX)
+'2317643':
+  est_max_diameter_m: 1259.0413069164
+  id: '2317643'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=2317643
+  name: 317643 (2003 FH1)
+'3399581':
+  est_max_diameter_m: 247.7650126055
+  id: '3399581'
+  is_ele: true
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=3399581
+  name: (2008 AZ30)
+'3610029':
+  est_max_diameter_m: 348.36938254
+  id: '3610029'
+  is_ele: true
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=3610029
+  name: (2012 TF53)
+'3785705':
+  est_max_diameter_m: 165.2113875797
+  id: '3785705'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=3785705
+  name: (2017 SS32)
+'3836168':
+  est_max_diameter_m: 23.8803110188
+  id: '3836168'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=3836168
+  name: (2018 VS6)
+'3842898':
+  est_max_diameter_m: 92.9051906281
+  id: '3842898'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=3842898
+  name: (2019 LK6)
+'54075323':
+  est_max_diameter_m: 450.8582061718
+  id: '54075323'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=54075323
+  name: (2020 TN8)
+'54146075':
+  est_max_diameter_m: 31.9183166414
+  id: '54146075'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=54146075
+  name: (2021 KH)
+'54326765':
+  est_max_diameter_m: 74.8238376074
+  id: '54326765'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=54326765
+  name: (2022 VC2)
+'54433099':
+  est_max_diameter_m: 44.8786700881
+  id: '54433099'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=54433099
+  name: (2024 GM1)
+'54487288':
+  est_max_diameter_m: 289.7610313582
+  id: '54487288'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=54487288
+  name: (2024 SV13)
+'54494731':
+  est_max_diameter_m: 48.5556730882
+  id: '54494731'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=54494731
+  name: (2024 UX1)
+'54497056':
+  est_max_diameter_m: 44.3853837184
+  id: '54497056'
+  is_ele: false
+  jpl_url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=54497056
+  name: (2024 UE13)

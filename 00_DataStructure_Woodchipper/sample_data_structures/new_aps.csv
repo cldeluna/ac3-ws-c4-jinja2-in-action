@@ -1,0 +1,9 @@
+﻿Namespace,APName,APModel,APAntenna,APMount,Building,Floor,LocationDescription,APLoationMap,PrimaryWLC,SecondaryWLC,TertiaryWLC,Mode,Switch,Port,Cabling,PinOut,CablingVendor
+GDL_Campus,FA-FL03-33,C9120AXI-E,None,None,MAIN,2,Center of Area,wireless-survey-ap-cabling-path.jpeg,1.1.1.11,1.1.1.12,1.1.1.13,Local,gld-idfa-as01,Gi1/0/46,Category6,T568B,Irish Communications
+GDL_Campus,FA-FL03-34,C9120AXI-E,None,None,MAIN,2,NW Corner,wireless-survey-ap-cabling-path.jpeg,1.1.1.11,1.1.1.12,1.1.1.13,Local,gld-idfa-as01,Gi1/0/46,Category6,T568B,Irish Communications
+GDL_Campus,FA-FL03-35,C9120AXI-E,None,None,MAIN,2,SE Corner,wireless-survey-ap-cabling-path.jpeg,1.1.1.11,1.1.1.12,1.1.1.13,Local,gld-idfa-as01,Gi1/0/46,Category6,T568B,Irish Communications
+GDL_Campus,FA-FL03-36,C9120AXI-E,None,None,MAIN,2,SE Corner,wireless-survey-ap-cabling-path.jpeg,1.1.1.11,1.1.1.12,1.1.1.13,Local,gld-idfa-as01,Gi1/0/46,Category6,T568B,Irish Communications
+GDL_Campus,FA-FL03-37,C9120AXI-E,None,None,MAIN,2,SW Corner,wireless-survey-ap-cabling-path.jpeg,1.1.1.11,1.1.1.12,1.1.1.13,Local,gld-idfa-as01,Gi1/0/46,Category6,T568B,Irish Communications
+GDL_Campus,FA-FL03-38,C9120AXI-E,None,None,MAIN,2,SW Corner,wireless-survey-ap-cabling-path.jpeg,1.1.1.11,1.1.1.12,1.1.1.13,Local,gld-idfa-as01,Gi1/0/46,Category6,T568B,Irish Communications
+GDL_Campus,FA-FL03-39,C9120AXI-E,None,None,MAIN,2,SW Corner,wireless-survey-ap-cabling-path.jpeg,1.1.1.11,1.1.1.12,1.1.1.13,Local,gld-idfa-as01,Gi1/0/46,Category6,T568B,Irish Communications
+GDL_Campus,FA-FL03-40,C9120AXI-E,None,None,MAIN,2,SW Corner,wireless-survey-ap-cabling-path.jpeg,1.1.1.11,1.1.1.12,1.1.1.13,Local,gld-idfa-as01,Gi1/0/46,Category6,T568B,Irish Communications
