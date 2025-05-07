@@ -8,18 +8,20 @@ Please open the `gen_bgp_report.py` script in your favorite editor and lets get 
 
 ```python
 % uv run gen_bgp_report.py -h
-usage: gen_bgp_report.py [-h] [-t TITLE] [-l LOCATION]
+usage: gen_bgp_report.py [-h] [-s STEP] [-t TITLE] [-l LOCATION]
 
 Script Description
 
 options:
   -h, --help            show this help message and exit
+  -s STEP, --step STEP  Execute a specific step. Default: 0 which executes all steps
   -t TITLE, --title TITLE
                         Add Custom Title to report. Default: BGP_Report
   -l LOCATION, --location LOCATION
                         Location Default: GDL Campus
 
 Usage: ' python gen_bgp_report.py' or python gen_bgp_report.py -l 'AMS Campus'
+
 
 ```
 
@@ -156,6 +158,6 @@ One option would be to extract BGP information from Suzieq via a REST call.
 │   └── working_example
 │       ├── GDL_Campus_BGP_Diagram.jpg
 │       ├── GDL_Campus_BGP_REPORT.md
-│       └── gen_bgp_report.py
+
 ```
 
