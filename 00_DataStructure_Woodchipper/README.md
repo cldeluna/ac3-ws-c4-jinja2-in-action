@@ -22,7 +22,7 @@ The data_woodchipper.py App illustrates data structures and their display in cor
 ### Starting the App
 Change into the 00_DataStructureChipper directory.
 ```bash
-solara run data_woodchipper.py
+uv run solara run data_woodchipper.py
 ```
 
 When the web page comes up, a list of available files comes up.  These files contain various types of data structures.
