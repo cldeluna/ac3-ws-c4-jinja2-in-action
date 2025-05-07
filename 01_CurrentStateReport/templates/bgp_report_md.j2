@@ -1,0 +1,30 @@
+{#- Markdown report template bgp_report_md.j2 -#}
+# BGP Report for Location {{ location }}
+
+Location {{ location }} has {{ bgp_list|length }} BPG Sessions
+
+{% if all_peers_up %}
+All BGP Peering Sessions are Up!
+{% else %}
+Not all of the BGP Peering Sessions are up!
+{% endif %}
+
+{% if ibgp_count %}
+There are {{ ibgp_count }} IBGP Sessions.
+{% else %}
+There are no IBGP Sessions.
+{% endif %}
+
+{% if ebgp_count %}
+There are {{ ebgp_count }} EBGP Sessions.
+{% else %}
+There are no EBGP Sessions.
+{% endif %}
+
+![Diagram of BGP Sessions]({{ drawing_filename }})
+
+{# This is a comment
+{% for line in bgp_list %}
+{{ line }}
+{% endfor %}
+#}
