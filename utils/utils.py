@@ -15,6 +15,7 @@ __license__ = "Python"
 import pprint
 import re
 import os
+import sys
 import csv
 import yaml
 import json
@@ -39,6 +40,39 @@ from diagrams.generic.network import Router
 requests.packages.urllib3.disable_warnings(
     requests.packages.urllib3.exceptions.InsecureRequestWarning
 )
+
+
+def country_code_info(iso3letter="CZE"):
+
+    print("\nPython version:")
+    print(".".join(map(str, sys.version_info[:3])))
+    print(f"Virtual environment path: {sys.prefix}\n")
+
+    # REST call to restcountries.com API
+    response = requests.get('https://restcountries.com/v3.1/all')
+    countries = response.json()
+
+    print(f"\nNumber of countries: {len(countries)}\n")
+
+    common_name = countries[0]["name"]["common"]
+    print(f"\nCommon name of the first country: {common_name}\n")
+    cca3 = countries[0]["cca3"]
+    print(f"\nCCA3 of the first country: {cca3}\n")
+
+    iso_country = []
+    for line in countries:
+        if line["cca3"] == iso3letter:
+            iso_country = line
+            print(f"\nFound country with CCA3 code: {iso3letter} {line['name']['official']}\n")
+            pprint.pprint(line)
+            break
+    print()
+    print()
+    print("\nKeys of the first country dictionary:")
+    pprint.pprint(list(countries[0].keys()))
+
+    return iso_country
+
 
 
 def is_user_intf(intf):
