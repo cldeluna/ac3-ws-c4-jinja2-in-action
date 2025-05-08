@@ -10,4 +10,10 @@ dependencies = [
     "pandas>=2.2.3",
     "pyyaml>=6.0.2",
     "solara>=1.47.0",
+    "streamlit>=1.26.0",
+    "python-dotenv",
+    "openpyxl>=3.1.2",
+    "requests>=2.31.0",
+    "pytest",
+    "pytest-mock",
 ]

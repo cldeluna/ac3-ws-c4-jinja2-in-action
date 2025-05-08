@@ -1,0 +1,22 @@
+location: GDL Office
+loc_type: campus # branch, campus, datacenter
+l3_dev: gdl-core01
+due_date: 2024-12-04
+mgmt_subnet: 192.168.1.0/29
+model: S2000
+name: gdl-sec-app01.uwaco.net
+mgmt_sw: gdl-as01
+mgmt_int: GigabitEthernet1/0/21
+mgmt_vlan: 31
+span_int: TenGigabitEthernet1/1/17
+power_plug: NEMA 5-15
+ru: 31
+rack: 5
+notes: Plenty of room above the core device in Rack 5
+rspan_range: 7XX
+appliance_location: TBD
+photos: TBD
+smart_hands: Rupert Pupkin
+sh_email: rupert@king-of-comedy.net
+sh_mobile: "pay phone 3 located in Times Square 555-555-5555"
+

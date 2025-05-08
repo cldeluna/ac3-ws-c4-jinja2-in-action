@@ -1,0 +1,21 @@
+location: DEN Office
+loc_type: branch # branch, campus, datacenter
+l3_dev: den-core01
+due_date: 2024-12-04
+mgmt_subnet: 192.168.7.0/29
+model: S600
+name: den-sec-app01.uwaco.net
+mgmt_sw: den-as01
+mgmt_int: GigabitEthernet1/0/47
+mgmt_vlan: 60
+span_int: TenGigabitEthernet1/1/21
+power_plug: NEMA 5-15
+ru: 12
+rack: 1
+notes: Shelf may be a tight fit an may use up an extra RU
+rspan_range: 7XX
+appliance_location: Floor 1 MDF
+photos: TBD
+smart_hands: Ed Herlihy
+sh_email: ed@king-of-comedy.net
+sh_mobile: "555-666-5677"

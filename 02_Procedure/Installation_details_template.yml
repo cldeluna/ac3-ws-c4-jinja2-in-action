@@ -1,0 +1,21 @@
+location:
+loc_type:  # branch, campus, datacenter
+l3_dev:
+due_date:
+mgmt_subnet: 192.168.1.0/29
+model:
+name:
+mgmt_sw:
+mgmt_int:
+mgmt_vlan:
+span_int:
+power_plug:
+ru:
+rack:
+notes:
+rspan_range:
+appliance_location:
+photos:
+smart_hands:
+sh_email:
+sh_mobile:

@@ -1,0 +1,87 @@
+# Installation Instructions and Details for {{ cfg['location'] }}
+
+## Site Type {{ cfg['loc_type']  }}
+
+___
+
+***Last Updated: {{ cfg['dattim'] }}***
+<br>
+Smarthands at {{ cfg['location'] }}: {{ cfg['smart_hands'] }}
+<br>
+<br>![Appliance]({{ cfg['diagram'] }})
+<br>
+<br>
+| ITEM               | Value                     |
+|--------------------|---------------------------|
+| LOCATION TYPE              |   {{ cfg['loc_type'] }}   |
+| MODEL              |   {{ cfg['model'] }}   |
+| APPLIANCE FQDN        |   {{ cfg['name'] }}    |
+| APPLIANCE IP       |   {{ cfg['mgmt_ip'] }} |
+| MGMT VLAN          |   {{ cfg['mgmt_vlan'] }}    |
+| MGMT Subnet Gateway        |   {{ cfg['mgmt_gw'] }}    |
+| MGMT Subnet Mask        |   {{ cfg['mgmt_mask'] }}  |
+| MGMT Subnet CIDR        |   {{ cfg['mgmt_subnet'] }}    |
+| MGMT Subnet Gateway Device       |   {{ cfg['l3_dev'] }}    |
+| MGMT SWITCH         |   {{ cfg['mgmt_sw'] }}   |
+| SWITCH INTERFACE       |   {{cfg['mgmt_int'] }}    |
+| SPAN VLAN RANGE        |   {{ cfg['rspan_range'] }}   |
+| SPAN INTERFACE        |   {{cfg['span_int'] }} on {{cfg['l3_dev'] }}   |
+| NOTES       |   {{cfg['notes'] }}    |
+| Recommended Install RU       |   {{cfg['ru'] }}    |
+| Smart Hands Name      |   {{ cfg['smart_hands'] }}    |
+| Smart Hands Email      |   {{ cfg['sh_email'] }}    |
+| Smart Hands Phone      |   {{ cfg['sh_mobile'] }}    |
+<br>
+---
+
+{% if cfg['model'] == 'S2000'  %}
+
+## Installing a {{ cfg['model'] }}
+
+The {{ cfg['model'] }} is a full width 19" 1RU appliance that comes with mounting ears.
+Please attach the mounting ears to install in Rack {{ cfg['rack'] }}  RU {{ cfg['rack'] }}
+{% else %}
+
+## Installing a {{ cfg['model'] }}
+
+The {{ cfg['model'] }} is not a full width appliance.  Your order should have come with a standard 19" shelf.
+The shelf needs to be mounted in {{ cfg['rack'] }}  RU {{ cfg['rack'] }} and the Appliance placed on top.
+
+{% endif %}
+
+### Notes
+{{ cfg['notes'] }}
+
+### Management Connection
+Please connect the appliance mgmt interface to switch {{ cfg['mgmt_sw'] }} using interface {{ cfg['mgmt_int'] }}
+This interface has already been configured for vlan {{ cfg['mgmt_vlan'] }}.
+
+### Data Connection (SPAN/RSPAN)
+Please connect the appliance mgmt interface to switch {{ cfg['l3_dev'] }} using interface {{ cfg['span_int'] }}
+This interface has already been configured to support the appliance.
+
+### Device Network Configuration
+Tip:  It might be easier to configure the IP, Mask, and Gateway prior to taking to the IDF.
+
+For appliance {{ name }} please use the following network configuration details:
+Management subnet: {{ cfg['mgmt_subnet'] }}
+Management Vlan:   {{ cfg['mgmt_vlan'] }}
+Appliance IP: {{ cfg['mgmt_int'] }}
+Appliance MASK: {{ cfg['mgmt_mask'] }}
+Appliance Gateway: {{ cfg['mgmt_sw'] }}
+Appliance Primary DNS: 8.8.8.8
+Appliance Secondary DNS: 9.9.9.9
+
+### Labeling
+The appliance should have been sent with an envelope containing two labels.
+Please affix one label to the front of the unit and one to the back.
+Labels must be visible from front and back.
+
+### Power
+Please connect the single power supply to an empty {{ cfg['power_plug'] }}
+
+{# uncomment if you want to see the raw data
+{% for k,v in cfg.items() %}
+{{ k }}  {{ v }}
+{% endfor %}
+#}
