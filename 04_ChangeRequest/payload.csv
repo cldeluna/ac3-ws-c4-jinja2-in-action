@@ -1,0 +1,2 @@
+﻿location,new_vlan,desc_12char,type,gateway_device,subnet_cidr,svi,route
+LAX_Campus,300,,building_automation,lax-csw03,203.0.113.0/24,TRUE,TRUE
