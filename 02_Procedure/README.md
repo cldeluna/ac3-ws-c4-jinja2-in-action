@@ -224,3 +224,76 @@ All files are local for this mini project.
 │       └── gen_procedure.py
 ```
 
+
+
+
+
+
+
+```python
+claudia@Claudias-Mac-mini-m1 02_Procedure % uv sync
+Resolved 110 packages in 0.75ms
+Audited 105 packages in 0.05ms
+claudia@Claudias-Mac-mini-m1 02_Procedure % uv run gen_procedure.py
+Traceback (most recent call last):
+  File "/Users/claudia/Indigo Wire Networks Dropbox/Claudia de Luna/Mac/Downloads/clones/ac3-ws-c4-jinja2-in-action/02_Procedure/gen_procedure.py", line 36, in <module>
+    from utils import utils
+ModuleNotFoundError: No module named 'utils'
+claudia@Claudias-Mac-mini-m1 02_Procedure % cd ..
+claudia@Claudias-Mac-mini-m1 ac3-ws-c4-jinja2-in-action % uv pip install -e .
+Resolved 106 packages in 528ms
+      Built ac3-templating-workshop @ file:///Users/claudia/Indigo%20Wire%20Networks%2
+Prepared 1 package in 671ms
+Installed 1 package in 1ms
+ + ac3-templating-workshop==0.1.0 (from file:///Users/claudia/Indigo%20Wire%20Networks%20Dropbox/Claudia%20de%20Luna/Mac/Downloads/clones/ac3-ws-c4-jinja2-in-action)
+claudia@Claudias-Mac-mini-m1 ac3-ws-c4-jinja2-in-action % cd 02_Procedure
+claudia@Claudias-Mac-mini-m1 02_Procedure % uv run gen_procedure.py
+usage: gen_procedure.py [-h] payload_file
+gen_procedure.py: error: the following arguments are required: payload_file
+claudia@Claudias-Mac-mini-m1 02_Procedure % uv run gen_procedure.py Installation_details_S2000.yml
+YAML File Contents
+{'appliance_location': 'TBD',
+ 'due_date': datetime.date(2024, 12, 4),
+ 'l3_dev': 'gdl-core01',
+ 'loc_type': 'campus',
+ 'location': 'GDL Office',
+ 'mgmt_int': 'GigabitEthernet1/0/21',
+ 'mgmt_subnet': '192.168.1.0/29',
+ 'mgmt_sw': 'gdl-as01',
+ 'mgmt_vlan': 31,
+ 'model': 'S2000',
+ 'name': 'gdl-sec-app01.uwaco.net',
+ 'notes': 'Plenty of room above the core device in Rack 5',
+ 'photos': 'TBD',
+ 'power_plug': 'NEMA 5-15',
+ 'rack': 5,
+ 'rspan_range': '7XX',
+ 'ru': 31,
+ 'sh_email': 'rupert@king-of-comedy.net',
+ 'sh_mobile': 'pay phone 3 located in Times Square 555-555-5555',
+ 'smart_hands': 'Rupert Pupkin',
+ 'span_int': 'TenGigabitEthernet1/1/17'}
+
+
+Saved installation Markdown file to /Users/claudia/Indigo Wire Networks Dropbox/Claudia de Luna/Mac/Downloads/clones/ac3-ws-c4-jinja2-in-action/02_Procedure/GDL Office_ORDR_Appliance_Installation_20250508-160543.md
+
+claudia@Claudias-Mac-mini-m1 02_Procedure %
+```
+
+Rank	Airport	IATA / ICAO
+1.	Václav Havel Airport Prague	PRG / LKPR
+2.	Brno–Tuřany Airport	BRQ / LKTB
+3.	Leoš Janáček Airport Ostrava	OSR / LKMT
+4.	Karlovy Vary Airport	KLV / LKKV
+
+
+```
+ 1497  cd ..
+ 1498  uv pip install -e .
+ 1499  uv sync
+ 1500  uv pip install -e .
+ 1501  cd 02_Procedure
+ 1502  uv run gen_procedure.py
+ 1503  uv run gen_procedure.py Installation_details_S2000.yml
+
+```

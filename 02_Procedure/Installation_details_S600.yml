@@ -1,11 +1,11 @@
-location: DEN Office
+location: PRG Office
 loc_type: branch # branch, campus, datacenter
-l3_dev: den-core01
-due_date: 2024-12-04
+l3_dev: prg-core01
+due_date: 2025-05-31
 mgmt_subnet: 192.168.7.0/29
 model: S600
-name: den-sec-app01.uwaco.net
-mgmt_sw: den-as01
+name: prg-sec-app01.uwaco.net
+mgmt_sw: prg-as01
 mgmt_int: GigabitEthernet1/0/47
 mgmt_vlan: 60
 span_int: TenGigabitEthernet1/1/21

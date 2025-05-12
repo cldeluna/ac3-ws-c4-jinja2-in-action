@@ -1,11 +1,11 @@
-location: GDL Office
+location: OSR Campus
 loc_type: campus # branch, campus, datacenter
-l3_dev: gdl-core01
-due_date: 2024-12-04
+l3_dev: osr-core01
+due_date: 2025-05-31
 mgmt_subnet: 192.168.1.0/29
 model: S2000
-name: gdl-sec-app01.uwaco.net
-mgmt_sw: gdl-as01
+name: osr-sec-app01.uwaco.net
+mgmt_sw: osr-as01
 mgmt_int: GigabitEthernet1/0/21
 mgmt_vlan: 31
 span_int: TenGigabitEthernet1/1/17
