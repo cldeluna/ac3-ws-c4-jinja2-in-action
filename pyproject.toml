@@ -16,4 +16,5 @@ dependencies = [
     "requests>=2.31.0",
     "pytest",
     "pytest-mock",
+    "pytz>=2025.2",
 ]
