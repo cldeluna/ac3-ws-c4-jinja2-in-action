@@ -1080,6 +1080,19 @@ def sort_filenames_by_length(filenames):
     return sorted(filenames, key=len)
 
 
+def create_output_dir_fp(local_cwd, output_dir_name, filename):
+
+    # Check to see if the output directory exists and if it does not, create it
+    # This is the directory where we will store the resulting config files
+    output_directory = os.path.join(local_cwd, output_dir_name)
+    check_and_create_directory(output_directory)
+
+    if filename:
+        return os.path.join(output_directory, filename)
+    else:
+        return None
+
+
 def main():
     print(
         "\nThis script contains commonly used functions and is intended to serve as a utility module for other "
