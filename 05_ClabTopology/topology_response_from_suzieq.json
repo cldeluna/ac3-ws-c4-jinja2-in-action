@@ -1,0 +1,389 @@
+[
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc1",
+        "ifname": "Ethernet1",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc1",
+        "ifname": "Ethernet2",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc1",
+        "ifname": "Ethernet3",
+        "peerHostname": "gdl-dist2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc1",
+        "ifname": "Ethernet4",
+        "peerHostname": "gdl-dist2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc1",
+        "ifname": "Management0",
+        "peerHostname": "gdl-core2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc2",
+        "ifname": "Ethernet1",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc2",
+        "ifname": "Ethernet2",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc2",
+        "ifname": "Management0",
+        "peerHostname": "gdl-core2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc3",
+        "ifname": "Ethernet1",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc3",
+        "ifname": "Ethernet2",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc3",
+        "ifname": "Management0",
+        "peerHostname": "gdl-acc1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc4",
+        "ifname": "Ethernet1",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc4",
+        "ifname": "Ethernet2",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc4",
+        "ifname": "Management0",
+        "peerHostname": "gdl-core1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc5",
+        "ifname": "Ethernet1",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc5",
+        "ifname": "Ethernet2",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-acc5",
+        "ifname": "Management0",
+        "peerHostname": "gdl-core2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-core1",
+        "ifname": "Ethernet1",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-core1",
+        "ifname": "Ethernet2",
+        "peerHostname": "gdl-dist2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-core1",
+        "ifname": "Management0",
+        "peerHostname": "gdl-core2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-core2",
+        "ifname": "Ethernet1",
+        "peerHostname": "gdl-dist1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-core2",
+        "ifname": "Ethernet2",
+        "peerHostname": "gdl-dist2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-core2",
+        "ifname": "Management0",
+        "peerHostname": "core1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": false
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Ethernet1",
+        "peerHostname": "gdl-core1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Ethernet10",
+        "peerHostname": "gdl-acc4",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Ethernet11",
+        "peerHostname": "gdl-acc5",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Ethernet2",
+        "peerHostname": "gdl-core2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Ethernet3",
+        "peerHostname": "gdl-acc1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Ethernet4",
+        "peerHostname": "gdl-acc1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Ethernet5",
+        "peerHostname": "gdl-acc2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Ethernet6",
+        "peerHostname": "gdl-acc2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Ethernet7",
+        "peerHostname": "gdl-acc3",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist1",
+        "ifname": "Management0",
+        "peerHostname": "gdl-acc3",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Ethernet1",
+        "peerHostname": "gdl-core1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Ethernet10",
+        "peerHostname": "gdl-acc4",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Ethernet11",
+        "peerHostname": "gdl-acc5",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Ethernet2",
+        "peerHostname": "gdl-core2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Ethernet3",
+        "peerHostname": "gdl-acc1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Ethernet4",
+        "peerHostname": "gdl-acc1",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Ethernet5",
+        "peerHostname": "gdl-acc2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Ethernet6",
+        "peerHostname": "gdl-acc2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Ethernet7",
+        "peerHostname": "gdl-acc3",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    },
+    {
+        "namespace": "GDL_Campus",
+        "hostname": "gdl-dist2",
+        "ifname": "Management0",
+        "peerHostname": "gdl-acc2",
+        "vrf": "default",
+        "lldp": true,
+        "polled": true
+    }
+]
