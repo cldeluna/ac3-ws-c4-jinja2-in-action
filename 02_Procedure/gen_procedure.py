@@ -95,32 +95,45 @@ def main():
     )
     rendered = template_obj.render(cfg=payload_dict)
 
-    # Define Parent directory (in this example we are saving into the local directory)
-    other_fp = os.path.join(os.getcwd())
-    # Define the filename
-    filename = (
-        f"{payload_dict['location']}_ORDR_Appliance_Installation_{file_timestamp}.md"
-    )
-    # Create the full path to the new file
-    procedure_fp = os.path.join(other_fp, filename)
+    # ----------------------------------------------------------------------------------------------------------
+    # Save the rendered content to a file
 
-    # Save the rendered content to the file
-    utils.save_file(procedure_fp, rendered)
-    print(f"\n\nSaved installation Markdown file to {procedure_fp}\n")
+    # Define the filename
+    # Remove special characters from location including replacing spaces with underscores
+    location = utils.replace_special_chars(payload_dict['location'])
+    filename = (
+        f"{location}_ORDR_Appliance_Installation_{file_timestamp}.md"
+    )
+
+    # Create output directory and set the full path
+    procedure_fp = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
+
+    if procedure_fp:
+        # Save the rendered content to the file
+        utils.save_file(procedure_fp, rendered)
+        print(f"\n\nInstallation Markdown file {filename} created.")
+        print(f"\tSaved file to {procedure_fp}\n")
 
 
 # Standard call to the main() function.
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Script Description",
-        epilog="Usage: ' python gen_procedure_starter_starter.py <payload yaml>' Example payload yaml: 'Installation_details_S2000.yml'.  "
-               "To use another payload file use the -p option.",
+        epilog="Usage: ' python or uv run gen_procedure_starter_starter.py <payload yaml>' Example payload yaml: 'Installation_details_S2000.yml'.  ",
     )
 
     # parser.add_argument('all', help='Execute all exercises in week 4 assignment')
     parser.add_argument(
         "payload_file",
         help="YAML Payload file to use. Default: Installation_details_S2000.yml"
+    )
+
+    parser.add_argument(
+        "-o",
+        "--output_dir",
+        help="output directory Markdown procedure files. Default is output",
+        action="store",
+        default="output",
     )
 
     arguments = parser.parse_args()
