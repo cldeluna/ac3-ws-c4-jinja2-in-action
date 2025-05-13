@@ -173,21 +173,17 @@ def main():
     # Check to make sure the topology has data (nodes and links)
     if topology_data['nodes'] and topology_data['links']:
 
-        # Check to see if the output directory exists and if it does not, create it
-        # This is the directory where we will store the resulting config files
-        topology_directory = os.path.join(os.getcwd(), arguments.output_dir)
-        utils.check_and_create_directory(topology_directory)
-
         # Save the YAML topology to a file if we have node and link data
         filename = f"{topology_data['name'].lower()}.clab.yml"
 
-        clab_topo_file_fullpath = os.path.join(topology_directory, filename)
+        # Create output directory and set the full path
+        topology_fp = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
 
-        with open(clab_topo_file_fullpath, "w") as f:
+        with open(topology_fp, "w") as f:
             f.write(clab_topology)
 
         print(
-            f"\nContainerlab Topology file saved to {filename} in output directory:\n\t{topology_directory}\n"
+            f"\nContainerlab Topology file saved to {filename} in output directory:\n\t{topology_fp}\n"
         )
     else:
         print("\nToplogy has no node or link data. Please review the topology links. Management0 interfaces are dropped")
