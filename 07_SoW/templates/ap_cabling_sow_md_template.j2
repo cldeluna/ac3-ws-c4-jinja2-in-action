@@ -1,0 +1,113 @@
+
+# Statement of Work (SOW) 
+
+## Wireless Access Point Installation {{ cfg['location'] }}
+
+Generated: {{ cfg['timestamp'] }}
+
+Data Source: {{ cfg['extdb'] }}
+
+## BACKGROUND
+
+The Underwater Corporation (UWACO) has a requirement to expand the coverage of the Wireless networking infrastructure at the {{ cfg['location'] }} facility. Customs and Border Protection (CBP) is dependent upon information from data processing systems to fulfill its mission. The dynamic growth, shifting patterns, deficits, and expanding use of trade information by customers and end users in both the private and public sector have placed increased performance demands on the systems. Satisfying escalating demands requires better, faster and more robust access, functionality, responsiveness, and availability.
+
+## SCOPE
+
+This requirement is to expand the coverage of the Wireless networking infrastructure at the {{ cfg['location'] }} facility, located in Long Beach, California. The contractor is to provide and Install conduit for Cisco Wireless Access Points, Install, terminate & Test CAT 6A Plenum cabling (EIA 568B), and Mount and Test Cisco Access Points.
+
+## APPLICABLE DOCUMENTS
+
+Contractor shall comply with all required Federal, State and Local Laws, licenses and regulations. It is the responsibility of the contractor to be in compliance and current with all applicable laws and licensing requirements.
+
+
+### OVERVIEW
+
+Selected contractor shall mount {{ cfg['data_lod']|length}} new Wireless Access Points and install the {{ cfg['data_lod']|length}} associated cabling runs.
+
+{% if cfg['models']|length == 1 %}
+The following AP Model will be installed and provided by UWACO IT.
+{% else %}
+The following AP Models will be installed and provided by UWACO IT.
+{% endif %}
+
+{% for ap in cfg['models'] %}
+- {{ ap }}
+{% endfor %}
+
+## AP Placement Map
+
+
+{% for map in cfg['maps'] %}
+![wireless-survey-ap-cabling-path](images/wireless-survey-ap-cabling-path.jpg)
+{% endfor %}
+
+
+## AP Labeling, Mounting, and Location
+
+
+{{ cfg['mdtable'] }}
+
+
+## SPECIFIC TASKS
+
+It shall be the responsibility of the selected contractor to provide the configuration and system quantities to all locations stated herein. The vendor will exercise technical direction and control of the labor, supervision, engineering, manufacturing and test efforts required to perform this requirement and coordinate all efforts with UWACO IT. The Contractor shall furnish all supplies, materials, tools and equipment necessary for the performance of the work of this SOW, unless otherwise specified herein. To include miscellaneous mounting hardware and consumable, termination hardware and CAT 6A UTP copper cabling. Costs for correcting damage caused by misused materials will be borne by the Contractor.  Contractor must make arrangements of any lifts required to access AP locations.
+
+The contractor shall complete the following tasks as required to comply with this SOW:
+
+  1. Conduct Pathway investigation (“As Built” drawing) showing the path of the cables between the IDF/MDF and each end point. Investigation will be used to validate path and conduit space verification to identify the physical routing of the cable end to end.
+  2. Obtain all permits necessary for installation.
+  3. Install, terminate & Test Cabling System to be Belden 10GX Cat 6A System with RevConnect terminations or equivalent at AP locations and within Equipment Rooms (ER/MDF/IDF). At each floor, within Equipment Rooms (ER/MDF/IDF) cables will route through the ceiling and drop through sleeves (install new sleeves where necessary) and into/onto existing rack space. Provide new Belden RevConnect (or equivalent) patch panel for termination of the cables on each floor and in each rack.
+  4. Install cable runs in accordance with manufacturer’s recommendations and CBP specifications. Cable runs shall at no time exceed the overall specifications for total lengths in accordance with the ANSI/TIA/EIA standards. All cable runs will be installed into the cable tray system if available, or via rigid conduit if required, that will run to the closest MDF or IDF (LAN room). New installations must match current scheme on the existing patch panel. If there is not enough space on the patch panel, vendor will provide the appropriate sized patch panel. Each cable will be terminated into a Belden RevConnect Cat 6A insert. Cables will be terminated at Access Point locations into a Belden KeyConnect - 2-port surface mount box. Provide two (2) 3-foot and two (2) 7- foot Cat 6A patch cords for each AP location.
+  5. Install a minimum of 1’ conduit for each location where the cable transits through non CBP space.
+  6. Install two Data drops (2 CAT 6A runs) for each location as a primary data run and a secondary. The primary will be connected to the back of the Access Point labeled “Switch” and the secondary will be connected to the back of the Access Point labeled “Console”. Both runs will terminate in the appropriate MDF or IDF to a patch panel.
+  7. Install twenty (20) CBP provided Cisco Aironet Mobility Express 3700 /3800 Series Wireless Access Points (Manufacturer Part # • C9120AXI-E) on two (2) floors as specified in 7.1.1 and seven (7) floors as specified in 7.1.2
+  8. In accordance with the International Telecommunications Union (ITU) standards, the contractor shall label and date cables/wires/fiber optics installed to identify points of origin, destination and date of installation or modification. Follow station ID format & font size on faceplates and patch panels. (A XX-YY, where A= wiring closet name, XX= panel #, YY= port #). Identify both ends of cable – behind faceplates & behind patch panel in 12-14 pt Font, Helvetica or Ariel Font.
+  9. Test (100%) cable networks for integrity, interference, static, and other cable specification problems; making determinations of material or service problems and implementing resolutions within the scope of the order.
+
+## SUPPLIES, MATERIALS, AND EQUIPMENT
+
+  1. Equipment: All equipment must be properly guarded and meet all applicable OSHA standards. If the Contracting Officer or the Program Office Point of Contact (POC) determines that a piece of equipment is unsafe or is causing damage to the building or property being relocated, the Contractor shall immediately stop using the equipment and provide replacement equipment at no additional cost to the Government during these down times.
+  2. Insurance: Must provide a Certificate of Insurance at the time of award. The certificate must provide $2,000,000 in general liability coverage for each occurrence. $1,000,000 in general liability coverage for each occurrence and $1,000,000 in Excess/Umbrella for each occurrence, is an acceptable alternative. In addition, the Contractor shall furnish to the Contracting Officer, the necessary forms and procedures to file any necessary claims for damaged property.
+  3. Uniforms: The Contractor shall require all employees, including supervisors, to wear distinctive uniform clothing with the Contractor’s name for ready identification during all times when work is being performed.
+
+## DELIVERABLES AND DELIVERY SCHEDULE
+
+  1. DELIVERABLES:
+
+Contractor shall provide copies of the items listed below; both hard-copy and digital versions will be supplied. The digital version shall be in Markdown format. These documents are deliverables under the contract and shall be provided no later than 30 days ARO.
+
+    1. Pathway investigation (“As Built” drawing) showing the path of the cables between the IDF/MDF and each end point to validate path and conduit space verification to identify the physical routing of the cable end to end.
+    2.  The contractor shall provide results of all test and remediation’s to CBP for review and acceptance.
+
+## GOVERNMENT-FURNISHED EQUIPMENT AND INFORMATION
+
+The Government does not anticipate providing any Government-furnished equipment or Government-furnished information.
+
+## PLACE OF PERFORMANCE
+
+  1. {{ cfg['location'] }} 
+
+## PERIOD OF PERFORMANCE
+
+All work under this SOW shall be completed and delivered within 30 days after receipt of order (ARO).
+
+## SECURITY
+
+There are no specific classification level requirements associated with this procurement action. All information contained within is deemed Unclassified.
+
+## SPECIAL CONSIDERATIONS
+
+1. Environmental Management
+
+In order to comply with federally mandated environmental preference programs and Department of Homeland Security (DHS) "Green Procurement Program" (GPP) policy, US Customs and Border Protection requires the use of environmentally preferable products and services.
+
+These program elements include: recovered material products, energy and water efficient products, alternative fuels and fuel efficiency, bio-based products, non- ozone depleting substances, priority chemicals, and environmentally preferable products. These program elements are described on the Office of the Federal Environment Executive website ([http://www.ofee.gov).](http://www.ofee.gov/)
+
+1. Changes to the SOW
+
+No changes to this SOW or cost increases shall be incurred without written prior approval of the Contracting Officer as coordinated by the Contract Specialist. Any changes or cost increases will not take effect until the Contracting Officer executes a written modification.
+
+1. POINTS OF CONTACT:
+
+| Program Office:<br><br>Rupert Pupkin<br><br>Supervisory Mission Support Specialist<br><br>Office: (234) 567-8910<br><br>FAX: (234) 567-8910<br><br> | Procurement Office: Contract Specialist Branch<br><br>(123) 444-5555<br><br>[little.suzie@uwaco.net](mailto:little.suzie@uwaco.net)<br><br>Little Suzie<br><br>(123) 456-7890<br><br> |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
