@@ -131,7 +131,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o",
         "--output_dir",
-        help="output directory Markdown procedure files. Default is output",
+        help="output directory Markdown procedure files. Default is output.",
         action="store",
         default="output",
     )
