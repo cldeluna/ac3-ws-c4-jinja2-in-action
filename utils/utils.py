@@ -614,6 +614,14 @@ def try_sq_rest_call(uri_path, url_options, debug=False):
     return response
 
 
+def get_sq_health():
+    # Trick to get a unique list of namespaces for the pull down
+    URI_PATH = "/api/healte"
+    URL_OPTIONS = f""
+    response = try_sq_rest_call(URI_PATH, URL_OPTIONS)
+
+    return response
+
 def get_namespace_list():
     """
     This function pulls all the namespaces available in SuzieQ.
