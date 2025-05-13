@@ -135,13 +135,13 @@ def main():
         # Crafting a somewhat meaningful filename
         filename = f"{details_dict['location']}_NewVlan{details_dict['new_vlan']}_SNOW_STDCR.txt"
 
-        # creating a full path
-        cfg_file_fullpath = os.path.join(os.getcwd(), filename)
+        # Create output directory and set the full path
+        cr_text_fp = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
 
         # Saving the output to a text file
-        utils.save_file(cfg_file_fullpath, rendered_string)
+        utils.save_file(cr_text_fp, rendered_string)
 
-        print(f"Saved resulting CR file in current directory to {filename}")
+        print(f"Saved resulting CR text to {filename} in {arguments.output_dir} directory")
 
         # Craft CR short description
 
@@ -239,5 +239,13 @@ if __name__ == "__main__":
         action="store",
         default="",
     )
+    parser.add_argument(
+        "-o",
+        "--output_dir",
+        help="output directory CR text. Default is output",
+        action="store",
+        default="output",
+    )
+
     arguments = parser.parse_args()
     main()
