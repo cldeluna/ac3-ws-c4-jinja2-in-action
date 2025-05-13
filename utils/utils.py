@@ -575,7 +575,7 @@ def try_sq_rest_call(uri_path, url_options, debug=False):
     dotenv.load_dotenv()
 
     API_ACCESS_TOKEN = os.getenv("SQ_API_TOKEN")
-    API_ENDPOINT = "ac2-suzieq.cloudmylab.net"
+    API_ENDPOINT = "ac3-suzieq.cloudmylab.net"
 
     url = f"https://{API_ENDPOINT}:8443{uri_path}?{url_options}"
 
