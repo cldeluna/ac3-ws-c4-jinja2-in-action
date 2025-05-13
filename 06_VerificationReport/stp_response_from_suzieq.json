@@ -1,0 +1,15 @@
+[
+    {
+        "namespace": "CMN_Campus",
+        "hostname": "cmn-acc3",
+        "vlanName": "v10_Data_192.168.10.0/24",
+        "state": "active",
+        "interfaces": [
+            "Cpu",
+            "Ethernet1",
+            "Ethernet2"
+        ],
+        "vlan": 10,
+        "timestamp": 1731272585097
+    }
+]

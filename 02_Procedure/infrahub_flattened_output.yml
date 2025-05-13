@@ -1,0 +1,66 @@
+- id: 183ed4a7-2efd-d950-3a97-c51d58c6c858
+  hfid: prg-sec-app01
+  display_label: 'CampusAppliance(ID: 183ed4a7-2efd-d950-3a97-c51d58c6c858)'
+  __typename: CampusAppliance
+  domain: uwaco.net
+  installation_actual_date: null
+  floor: 1
+  uplink_interface: TenGigabitEthernet1/1/21
+  sh_email: d@king-of-comedy.net
+  installation_planned_date: '2025-05-31'
+  position: 12
+  building: Main
+  sh_mobile: 555-666-5677
+  serial_number: SN123456789
+  mgmt_sw: prg-as01
+  site: PRG Office
+  interface_behavior: span
+  os_version: '1.0'
+  mgmt_subnet: 192.168.7.0/29
+  mgmt_vlan: '60'
+  rack: '1'
+  fqdn: prg-sec-app01.uwaco.net
+  power_plug: NEMA 5-15
+  site_type: branch
+  smart_hands: Ed Herlihy
+  model: S600
+  description: IoT Monitor for Site
+  hostname: prg-sec-app01
+  uplink_devince: prg-core01
+  photos_url: null
+  valid_vlan_start: 700
+  installation_notes: Shelf may be a tight fit an may use up an extra RU
+  mgmt_intf: GigabitEthernet1/0/47
+- id: 183ed4d7-2d26-88d0-3a9e-c51174f9b760
+  hfid: osr-sec-app01
+  display_label: 'CampusAppliance(ID: 183ed4d7-2d26-88d0-3a9e-c51174f9b760)'
+  __typename: CampusAppliance
+  domain: uwaco.net
+  installation_actual_date: null
+  floor: 2
+  uplink_interface: TenGigabitEthernet1/1/17
+  sh_email: rupert@king-of-comedy.net
+  installation_planned_date: '2025-05-31'
+  position: 31
+  building: Bldg B
+  sh_mobile: '"pay phone 3 located in Times Square 555-555-5555"'
+  serial_number: SN234567891
+  mgmt_sw: osr-as01
+  site: OSR Campus
+  interface_behavior: span
+  os_version: '1.1'
+  mgmt_subnet: 192.168.1.0/29
+  mgmt_vlan: '31'
+  rack: '5'
+  fqdn: osr-sec-app01.uwaco.net
+  power_plug: NEMA 5-15
+  site_type: campus
+  smart_hands: Rupert Pupkin
+  model: S2000
+  description: IoT Monitor for Site
+  hostname: osr-sec-app01
+  uplink_devince: osr-core01
+  photos_url: null
+  valid_vlan_start: 700
+  installation_notes: Plenty of room above the core device in Rack 5
+  mgmt_intf: GigabitEthernet1/0/21
