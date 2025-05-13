@@ -94,8 +94,9 @@ def main():
     filename = (
         f"{namespace}_AP_Installation_Statement_of_Work_{file_timestamp}.md"
     )
-    # Create the full path to the new file
-    sow_fp = os.path.join(os.getcwd(), filename)
+
+    # Create output directory and set the full path
+    sow_fp = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
 
     # Save the rendered content to the file
     utils.save_file(sow_fp, rendered_sow)
@@ -107,4 +108,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Script Description",
                                      epilog="Usage: ' python gen_sow.py' or 'uv run gen_sow.py' ")
     arguments = parser.parse_args()
+
+    parser.add_argument(
+        "-o",
+        "--output_dir",
+        help="output directory Markdown procedure files. Default is output.",
+        action="store",
+        default="output",
+    )
+
     main()
