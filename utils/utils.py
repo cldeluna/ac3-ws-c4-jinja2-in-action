@@ -31,6 +31,9 @@ import openpyxl
 import ipaddress
 import itertools
 
+from pathlib import Path
+from collections import Counter
+
 import pandas as pd
 
 from diagrams import Diagram, Edge
@@ -622,6 +625,7 @@ def get_sq_health():
 
     return response
 
+
 def get_namespace_list():
     """
     This function pulls all the namespaces available in SuzieQ.
@@ -1099,6 +1103,115 @@ def create_output_dir_fp(local_cwd, output_dir_name, filename):
         return os.path.join(output_directory, filename)
     else:
         return None
+
+
+def infer_infrahub_type(series: pd.Series) -> str:
+    """
+    Infer InfraHub-compatible type from a pandas Series.
+    Returns one of: 'Text', 'Number', 'Boolean', 'Dropdown'
+    """
+    non_null = series.dropna()
+
+    if non_null.empty:
+        return "Text"
+
+    # Boolean check
+    if set(non_null.unique()).issubset({True, False}):
+        return "Boolean"
+
+    # Number check
+    if pd.api.types.is_numeric_dtype(non_null):
+        return "Number"
+
+    # Dropdown check: low cardinality string fields
+    unique_vals = non_null.unique()
+    if pd.api.types.is_string_dtype(non_null) and len(unique_vals) <= 10:
+        return "Dropdown"
+
+    return "Text"
+
+
+
+def convert_excel_to_format(
+    input_file: str,
+    output_format: str = "yaml",
+    output_path: str = None,
+    export_schema: bool = False,
+    schema_output_path: str = None
+):
+    """
+    Convert Excel file to YAML or JSON and optionally generate InfraHub-compatible schema.
+
+    - Header is in row 1.
+    - No description row present.
+    - Labels are auto-generated from column names.
+
+    :param input_file: Path to the Excel .xlsx file.
+    :param output_format: 'yaml' or 'json' (case-insensitive).
+    :param output_path: Where to save the converted data.
+    :param export_schema: If True, also generate a schema.
+    :param schema_output_path: Where to save the schema file (YAML).
+    """
+    # Load Excel file with header
+    df = pd.read_excel(input_file, header=0)
+
+    # Convert data
+    data = df.to_dict(orient='records')
+
+    # Determine output path
+    output_format = output_format.lower()
+    output_path = output_path or Path(input_file).with_suffix(f".{output_format}")
+
+    # Save data
+    with open(output_path, "w", encoding="utf-8") as f:
+        if output_format == "yaml":
+            yaml.dump(data, f, allow_unicode=True, sort_keys=False)
+        elif output_format == "json":
+            json.dump(data, f, indent=2)
+        else:
+            raise ValueError("Unsupported output format. Use 'yaml' or 'json'.")
+
+    print(f"Data saved to: {output_path}")
+
+    # Optional: Export schema
+    if export_schema:
+        if schema_output_path is None:
+            schema_output_path = Path(input_file).with_name("schema.yaml")
+
+        attributes = []
+        for col in df.columns:
+            kind = infer_infrahub_type(df[col])
+            label = col.replace("_", " ").capitalize()
+            description = ""  # No description row available
+
+            attr = {
+                "name": col,
+                "label": label,
+                "description": description,
+                "kind": kind,
+                "optional": df[col].isnull().any()
+            }
+
+            if kind == "Dropdown":
+                values = df[col].dropna().unique()
+                attr["options"] = {
+                    "choices": [{"label": str(v), "value": str(v)} for v in sorted(values)]
+                }
+
+            attributes.append(attr)
+
+        schema = {
+            "nodes": [{
+                "name": Path(input_file).stem.capitalize(),
+                "attributes": attributes
+            }]
+        }
+
+        with open(schema_output_path, "w", encoding="utf-8") as f:
+            yaml.dump(schema, f, allow_unicode=True, sort_keys=False)
+
+        print(f"Schema saved to: {schema_output_path}")
+
 
 
 def main():
