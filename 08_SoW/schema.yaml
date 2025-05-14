@@ -1,0 +1,133 @@
+nodes:
+- name: Cabling_runs_for_access_points
+  attributes:
+  - name: label_start
+    label: Label start
+    description: ''
+    kind: Text
+    optional: &id001 !!python/object/apply:numpy._core.multiarray.scalar
+    - !!python/object/apply:numpy.dtype
+      args:
+      - b1
+      - false
+      - true
+      state: !!python/tuple
+      - 3
+      - '|'
+      - null
+      - null
+      - null
+      - -1
+      - -1
+      - 0
+    - !!binary |
+      AA==
+  - name: label_end
+    label: Label end
+    description: ''
+    kind: Text
+    optional: *id001
+  - name: cable_type
+    label: Cable type
+    description: ''
+    kind: Dropdown
+    optional: *id001
+    options:
+      choices:
+      - label: copper
+        value: copper
+  - name: cable_subtype
+    label: Cable subtype
+    description: ''
+    kind: Dropdown
+    optional: *id001
+    options:
+      choices:
+      - label: Cat6A
+        value: Cat6A
+  - name: connector_type_start
+    label: Connector type start
+    description: ''
+    kind: Dropdown
+    optional: *id001
+    options:
+      choices:
+      - label: RJ45
+        value: RJ45
+  - name: connector_type_end
+    label: Connector type end
+    description: ''
+    kind: Dropdown
+    optional: *id001
+    options:
+      choices:
+      - label: RJ45
+        value: RJ45
+  - name: termination_type_start
+    label: Termination type start
+    description: ''
+    kind: Dropdown
+    optional: *id001
+    options:
+      choices:
+      - label: patch_panel
+        value: patch_panel
+  - name: termination_type_end
+    label: Termination type end
+    description: ''
+    kind: Dropdown
+    optional: *id001
+    options:
+      choices:
+      - label: wall_jack
+        value: wall_jack
+  - name: punch_down_standard
+    label: Punch down standard
+    description: ''
+    kind: Dropdown
+    optional: *id001
+    options:
+      choices:
+      - label: T568A
+        value: T568A
+      - label: T568B
+        value: T568B
+  - name: max_supported_length_m
+    label: Max supported length m
+    description: ''
+    kind: Number
+    optional: *id001
+  - name: actual_length_m
+    label: Actual length m
+    description: ''
+    kind: Number
+    optional: *id001
+  - name: innerduct_present
+    label: Innerduct present
+    description: ''
+    kind: Boolean
+    optional: *id001
+  - name: installation_notes
+    label: Installation notes
+    description: ''
+    kind: Text
+    optional: *id001
+  - name: last_test_date
+    label: Last test date
+    description: ''
+    kind: Text
+    optional: *id001
+  - name: status
+    label: Status
+    description: ''
+    kind: Dropdown
+    optional: *id001
+    options:
+      choices:
+      - label: active
+        value: active
+  - name: id
+    label: Id
+    description: ''
+    kind: Text
+    optional: *id001

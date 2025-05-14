@@ -1,0 +1,7 @@
+aaa authorization exec default local
+aaa authentication login default local
+username {{ aaa.username }} privilege 15 secret {{ aaa.password }}
+
+username admin privilege 15 role network-admin secret admin
+username cisco privilege 15 secret cisco
+

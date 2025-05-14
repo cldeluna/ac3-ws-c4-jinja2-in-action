@@ -1,0 +1,6 @@
+router ospf 100
+   router-id {{ ospf.router_id }}
+   {% for network in ospf.networks %}
+   network {{ network }} area 0
+   {% endfor %}
+

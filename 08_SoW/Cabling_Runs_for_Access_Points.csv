@@ -1,0 +1,21 @@
+label_start,label_end,cable_type,cable_subtype,connector_type_start,connector_type_end,termination_type_start,termination_type_end,punch_down_standard,max_supported_length_m,actual_length_m,innerduct_present,installation_notes,last_test_date,status,id
+PatchPanel-A01,AP01,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,40,True,Ceiling mount near room 146,2025-05-01,active,CRUN-0001
+PatchPanel-A02,AP02,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,43,True,Ceiling mount near room 127,2025-05-01,active,CRUN-0002
+PatchPanel-A03,AP03,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,47,True,Ceiling mount near room 102,2025-05-01,active,CRUN-0003
+PatchPanel-A04,AP04,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568A,100,42,True,Ceiling mount near room 139,2025-05-01,active,CRUN-0004
+PatchPanel-A05,AP05,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,11,False,Ceiling mount near room 140,2025-05-01,active,CRUN-0005
+PatchPanel-A06,AP06,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,17,True,Ceiling mount near room 100,2025-05-01,active,CRUN-0006
+PatchPanel-A07,AP07,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568A,100,57,True,Ceiling mount near room 116,2025-05-01,active,CRUN-0007
+PatchPanel-A08,AP08,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568A,100,57,False,Ceiling mount near room 122,2025-05-01,active,CRUN-0008
+PatchPanel-A09,AP09,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568A,100,60,False,Ceiling mount near room 123,2025-05-01,active,CRUN-0009
+PatchPanel-A10,AP10,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,15,False,Ceiling mount near room 110,2025-05-01,active,CRUN-0010
+PatchPanel-A11,AP11,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,10,False,Ceiling mount near room 129,2025-05-01,active,CRUN-0011
+PatchPanel-A12,AP12,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568A,100,10,False,Ceiling mount near room 121,2025-05-01,active,CRUN-0012
+PatchPanel-A13,AP13,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568A,100,24,True,Ceiling mount near room 114,2025-05-01,active,CRUN-0013
+PatchPanel-A14,AP14,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,16,False,Ceiling mount near room 146,2025-05-01,active,CRUN-0014
+PatchPanel-A15,AP15,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,49,False,Ceiling mount near room 120,2025-05-01,active,CRUN-0015
+PatchPanel-A16,AP16,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568A,100,33,True,Ceiling mount near room 107,2025-05-01,active,CRUN-0016
+PatchPanel-A17,AP17,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568A,100,33,True,Ceiling mount near room 150,2025-05-01,active,CRUN-0017
+PatchPanel-A18,AP18,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,32,True,Ceiling mount near room 104,2025-05-01,active,CRUN-0018
+PatchPanel-A19,AP19,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568A,100,11,True,Ceiling mount near room 139,2025-05-01,active,CRUN-0019
+PatchPanel-A20,AP20,copper,Cat6A,RJ45,RJ45,patch_panel,wall_jack,T568B,100,53,False,Ceiling mount near room 129,2025-05-01,active,CRUN-0020

@@ -1,0 +1,13 @@
+{% extends "mod_inherit_base.j2" %}
+
+{% block aaa %}
+! AAA Template
+aaa new-model
+aaa authentication login default group tacacs+ local
+aaa authorization exec default group tacacs+ local
+aaa accounting exec default start-stop group tacacs+
+!
+tacacs server TACACS1
+ address ipv4 {{ tacacs_server }}
+ key {{ tacacs_key }}
+{% endblock %}

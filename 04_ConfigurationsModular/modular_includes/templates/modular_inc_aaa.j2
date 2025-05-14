@@ -1,0 +1,12 @@
+aaa new-model
+aaa authentication login default group tacacs+ local
+aaa authorization exec default group tacacs+ local
+aaa accounting exec default start-stop group tacacs+
+!
+tacacs server {{ tacacs_server }}
+ address ipv4 {{ tacacs_ip }}
+ key {{ tacacs_key }}
+!
+{% for user in local_users %}
+username {{ user.name }} privilege {{ user.privilege }} secret {{ user.password }}
+{% endfor %}

@@ -1,0 +1,11 @@
+# templates/modular_inc_interfaces.j2
+{% for interface in interfaces %}
+interface {{ interface.name }}
+ description {{ interface.description }}
+ ip address {{ interface.ip_address }} {{ interface.subnet_mask }}
+ {% if interface.ospf_area is defined %}
+ ip ospf {{ ospf_process_id }} area {{ interface.ospf_area }}
+ {% endif %}
+ no shutdown
+!
+{% endfor %}

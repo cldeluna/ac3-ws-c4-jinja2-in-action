@@ -1,0 +1,6 @@
+{% for vlan_details in vlan_list %}
+! Switch: {{ vlan_details['HOSTNAME'] }}
+vlan {{ vlan_details['VLAN_ID'] }}
+ name {{ svlan_details['VLAN_NAME'] }}
+!
+{%- endfor -%}

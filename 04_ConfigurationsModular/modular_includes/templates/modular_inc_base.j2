@@ -1,0 +1,20 @@
+{#-
+# Directory structure:
+# templates/
+#   modular_inc_base.j2
+#   modular_inc_aaa.j2
+#   modular_inc_interfaces.j2
+#   modular_inc_ospf.j2
+# modular_include_config_generator.py
+-#}
+
+! templates/modular_inc_base.j2
+hostname {{ hostname }}
+!
+{% include 'modular_inc_aaa.j2' %}
+!
+{% include 'modular_inc_interfaces.j2' %}
+!
+{% include 'modular_inc_ospf.j2' %}
+!
+end

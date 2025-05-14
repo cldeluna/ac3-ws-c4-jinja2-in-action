@@ -1,0 +1,15 @@
+{% extends "mod_inherit_base.j2" %}
+
+{% block interfaces %}
+! Interface Template
+{% for interface in interfaces %}
+interface {{ interface.name }}
+ description {{ interface.description }}
+ ip address {{ interface.ip_address }} {{ interface.subnet_mask }}
+ {% if interface.get('ospf_area') %}
+ ip ospf {{ ospf_process_id }} area {{ interface.ospf_area }}
+ {% endif %}
+ no shutdown
+!
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{# ! This template expects a dictionary where the key is an interface id and the value is the new vlan #}
+
+{% for intf, new_vlan in cfg.items() %}
+interface {{ intf }}
+{% if desc %}
+  description {{ desc }}
+{% endif %}
+  switchport access vlan {{ new_vlan }}
+!
+{% endfor %}
+
+
+
+
+{#
+{% if ms_int > 8 %}
+   Legacy Stack is too big!
+{% elif ms_int > 0 and ms_int < 1 %}
+   Stack Size is Good
+{% else %}
+   ERROR...BAD Stack Size {{ maxstack }}
+{% endif %}
+#}
+
+
+{% if intf is defined %}
+DEFINED
+{% else %}
+UNDEFINED
+{% endif %}
+
+{% for intf in intf_list %}
+   {{ intf }}
+{% endfor %}

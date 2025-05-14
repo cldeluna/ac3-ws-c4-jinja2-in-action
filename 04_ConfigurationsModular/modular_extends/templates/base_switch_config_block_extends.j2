@@ -1,0 +1,13 @@
+{# base_switch_config_block_extends.j2 #}
+hostname {{ hostname }}
+
+vlan {{ user_vlan }}
+ name USER_VLAN
+
+{% block user_interface %}
+{# This block will be overridden by child templates #}
+{% endblock %}
+
+{% block tacacs_config %}
+{# This block will be overridden by child templates #}
+{% endblock %}

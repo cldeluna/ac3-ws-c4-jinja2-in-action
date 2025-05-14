@@ -1,0 +1,7 @@
+{#- tacacs_server_config_include.j2 -#}
+tacacs-server host {{ tacacs_server_ip }}
+tacacs-server key {{ tacacs_key }}
+aaa group server tacacs+ TACACS_GROUP
+ server {{ tacacs_server_ip }}
+aaa authentication login default group TACACS_GROUP local
+aaa authorization exec default group TACACS_GROUP local

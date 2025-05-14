@@ -1,0 +1,11 @@
+{% extends "mod_inherit_base.j2" %}
+
+{% block ospf %}
+! OSPF Template
+router ospf {{ ospf_process_id }}
+ router-id {{ router_id }}
+ auto-cost reference-bandwidth 100000
+ {% for network in ospf_networks %}
+ network {{ network.prefix }} {{ network.wildcard }} area {{ network.area }}
+ {% endfor %}
+{% endblock %}

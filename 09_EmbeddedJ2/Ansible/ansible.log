@@ -1,0 +1,40 @@
+2025-05-14 11:14:11,524 p=67170 u=claudiadeluna n=ansible INFO| PLAY [Generate switch configurations] **********************************************************************************
+2025-05-14 11:14:11,528 p=67170 u=claudiadeluna n=ansible INFO| TASK [Create config directory] *****************************************************************************************
+2025-05-14 11:14:11,777 p=67170 u=claudiadeluna n=ansible INFO| changed: [prg-cor01]
+2025-05-14 11:14:11,777 p=67170 u=claudiadeluna n=ansible INFO| ok: [prg-cor02]
+2025-05-14 11:14:11,778 p=67170 u=claudiadeluna n=ansible INFO| TASK [Generate switch configs] *****************************************************************************************
+2025-05-14 11:14:12,192 p=67170 u=claudiadeluna n=ansible INFO| changed: [prg-cor01]
+2025-05-14 11:14:12,192 p=67170 u=claudiadeluna n=ansible INFO| changed: [prg-cor02]
+2025-05-14 11:14:12,193 p=67170 u=claudiadeluna n=ansible INFO| PLAY RECAP *************************************************************************************************************
+2025-05-14 11:14:12,193 p=67170 u=claudiadeluna n=ansible INFO| prg-cor01                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-05-14 11:14:12,193 p=67170 u=claudiadeluna n=ansible INFO| prg-cor02                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-05-14 11:17:21,450 p=67381 u=claudiadeluna n=ansible INFO| PLAY [Generate switch configurations] **********************************************************************************
+2025-05-14 11:17:21,454 p=67381 u=claudiadeluna n=ansible INFO| TASK [Create config directory] *****************************************************************************************
+2025-05-14 11:17:21,707 p=67381 u=claudiadeluna n=ansible INFO| ok: [prg-cor01]
+2025-05-14 11:17:21,707 p=67381 u=claudiadeluna n=ansible INFO| ok: [prg-cor02]
+2025-05-14 11:17:21,708 p=67381 u=claudiadeluna n=ansible INFO| TASK [Generate switch configs] *****************************************************************************************
+2025-05-14 11:17:22,115 p=67381 u=claudiadeluna n=ansible INFO| fatal: [prg-cor01]: FAILED! => {"changed": false, "checksum": "3c6f1fe25d5a69e3b1afe16c6dfb8f9ac3cb6252", "msg": "Destination directory ../configs does not exist"}
+2025-05-14 11:17:22,115 p=67381 u=claudiadeluna n=ansible INFO| fatal: [prg-cor02]: FAILED! => {"changed": false, "checksum": "afa35894e2ee5a73770c8c2f31489caade39f3f4", "msg": "Destination directory ../configs does not exist"}
+2025-05-14 11:17:22,115 p=67381 u=claudiadeluna n=ansible INFO| PLAY RECAP *************************************************************************************************************
+2025-05-14 11:17:22,115 p=67381 u=claudiadeluna n=ansible INFO| prg-cor01                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-05-14 11:17:22,115 p=67381 u=claudiadeluna n=ansible INFO| prg-cor02                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-05-14 11:17:43,682 p=67570 u=claudiadeluna n=ansible INFO| PLAY [Generate switch configurations] **********************************************************************************
+2025-05-14 11:17:43,686 p=67570 u=claudiadeluna n=ansible INFO| TASK [Create config directory] *****************************************************************************************
+2025-05-14 11:17:43,930 p=67570 u=claudiadeluna n=ansible INFO| ok: [prg-cor01]
+2025-05-14 11:17:43,930 p=67570 u=claudiadeluna n=ansible INFO| ok: [prg-cor02]
+2025-05-14 11:17:43,931 p=67570 u=claudiadeluna n=ansible INFO| TASK [Generate switch configs] *****************************************************************************************
+2025-05-14 11:17:44,345 p=67570 u=claudiadeluna n=ansible INFO| changed: [prg-cor01]
+2025-05-14 11:17:44,346 p=67570 u=claudiadeluna n=ansible INFO| changed: [prg-cor02]
+2025-05-14 11:17:44,346 p=67570 u=claudiadeluna n=ansible INFO| PLAY RECAP *************************************************************************************************************
+2025-05-14 11:17:44,346 p=67570 u=claudiadeluna n=ansible INFO| prg-cor01                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-05-14 11:17:44,346 p=67570 u=claudiadeluna n=ansible INFO| prg-cor02                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-05-14 11:31:56,121 p=68199 u=claudiadeluna n=ansible INFO| PLAY [Generate switch configurations] *********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+2025-05-14 11:31:56,146 p=68199 u=claudiadeluna n=ansible INFO| TASK [Create config directory] ****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+2025-05-14 11:31:56,581 p=68199 u=claudiadeluna n=ansible INFO| changed: [prg-cor01]
+2025-05-14 11:31:56,581 p=68199 u=claudiadeluna n=ansible INFO| ok: [prg-cor02]
+2025-05-14 11:31:56,584 p=68199 u=claudiadeluna n=ansible INFO| TASK [Generate switch configs] ****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+2025-05-14 11:31:57,060 p=68199 u=claudiadeluna n=ansible INFO| changed: [prg-cor02]
+2025-05-14 11:31:57,060 p=68199 u=claudiadeluna n=ansible INFO| changed: [prg-cor01]
+2025-05-14 11:31:57,060 p=68199 u=claudiadeluna n=ansible INFO| PLAY RECAP ************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+2025-05-14 11:31:57,060 p=68199 u=claudiadeluna n=ansible INFO| prg-cor01                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-05-14 11:31:57,060 p=68199 u=claudiadeluna n=ansible INFO| prg-cor02                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

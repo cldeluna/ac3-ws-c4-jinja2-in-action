@@ -1,0 +1,12 @@
+{#- global_switch_config_include.j2 -#}
+hostname {{ hostname }}
+
+vlan {{ user_vlan }}
+ name USER_VLAN
+
+aaa session-id common
+clock timezone EST 10
+clock summer-time EDT recurring 1 Sun Oct 2:00 1 Sun Apr 2:00
+!
+vtp mode off
+

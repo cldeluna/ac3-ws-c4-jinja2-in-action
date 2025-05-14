@@ -1,0 +1,18 @@
+hostname {{ hostname }}
+!
+{% include 'includes/aaa.j2' %}
+!
+{% include 'includes/mlag.j2' %}
+!
+{% include 'includes/interfaces.j2' %}
+!
+{% include 'includes/ssh.j2' %}
+!
+{% include 'includes/api.j2' %}
+!
+{% include 'includes/domain.j2' %}
+!
+{% include 'includes/ntp.j2' %}
+!
+{% include 'includes/ospf.j2' %}
+

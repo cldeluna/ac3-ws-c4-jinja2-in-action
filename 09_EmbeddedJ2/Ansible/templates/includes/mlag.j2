@@ -1,0 +1,18 @@
+service routing protocols model multi-agent
+!
+interface Port-Channel1
+   description MLAG_PEER
+   no shutdown
+   mlag configuration
+      domain-id {{ mlag.domain_id }}
+      local-interface Vlan4094
+      peer-address {{ mlag.peer_ip }}
+      peer-link Port-Channel1
+!
+vlan 4094
+   name MLAG_PEER
+!
+interface Vlan4094
+   description MLAG_PEER
+   ip address {{ mlag.local_ip }}
+

@@ -1,0 +1,57 @@
+hostname prg-cor01
+!
+aaa authorization exec default local
+aaa authentication login default local
+username autocon privilege 15 secret autocon3
+
+username admin privilege 15 role network-admin secret admin
+username cisco privilege 15 secret cisco
+!
+service routing protocols model multi-agent
+!
+interface Port-Channel1
+   description MLAG_PEER
+   no shutdown
+   mlag configuration
+      domain-id 1000
+      local-interface Vlan4094
+      peer-address 192.0.2.1
+      peer-link Port-Channel1
+!
+vlan 4094
+   name MLAG_PEER
+!
+interface Vlan4094
+   description MLAG_PEER
+   ip address 192.0.2.0/31
+!
+interface Port-Channel1
+   description MLAG_PEER
+      no shutdown
+!
+interface Ethernet2
+   description SERVER01
+      no switchport
+   ip address 10.10.10.1/24
+      no shutdown
+!
+!
+ip ssh version 2
+ip ssh time-out 60
+
+!
+management api http-commands
+   protocol https
+   no shutdown
+!
+ip domain-name uwaco.net
+!
+ntp server 203.0.113.1
+ntp server 198.51.100.1
+!
+router ospf 100
+   router-id 1.1.1.1
+      network 192.0.2.0/31 area 0
+      network 10.10.10.0/24 area 0
+   
+

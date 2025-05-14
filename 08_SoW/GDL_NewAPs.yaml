@@ -1,0 +1,168 @@
+- Namespace: GDL_Campus
+  APName: FA-FL03-33
+  APModel: C9120AXI-E
+  APAntenna: .nan
+  APMount: .nan
+  Building: MAIN
+  Floor: 2
+  LocationDescription: Center of Area
+  APLoationMap: wireless-survey-ap-cabling-path.jpeg
+  PrimaryWLC: 1.1.1.11
+  SecondaryWLC: 1.1.1.12
+  TertiaryWLC: 1.1.1.13
+  Mode: Local
+  Switch: gld-idfa-as01
+  Port: Gi1/0/46
+  Cabling: Category6
+  PinOut: T568B
+  CablingVendor: Irish Communications
+  Vlan: 500
+  Status: Planning
+  Notes: Difficult location
+- Namespace: GDL_Campus
+  APName: FA-FL03-34
+  APModel: C9120AXI-E
+  APAntenna: .nan
+  APMount: .nan
+  Building: MAIN
+  Floor: 2
+  LocationDescription: NW Corner
+  APLoationMap: wireless-survey-ap-cabling-path.jpeg
+  PrimaryWLC: 1.1.1.11
+  SecondaryWLC: 1.1.1.12
+  TertiaryWLC: 1.1.1.13
+  Mode: Local
+  Switch: gld-idfa-as01
+  Port: Gi1/0/46
+  Cabling: Category6
+  PinOut: T568B
+  CablingVendor: Irish Communications
+  Vlan: 500
+  Status: Planning
+  Notes: .nan
+- Namespace: GDL_Campus
+  APName: FA-FL03-35
+  APModel: C9120AXI-E
+  APAntenna: .nan
+  APMount: .nan
+  Building: MAIN
+  Floor: 2
+  LocationDescription: SE Corner
+  APLoationMap: wireless-survey-ap-cabling-path.jpeg
+  PrimaryWLC: 1.1.1.11
+  SecondaryWLC: 1.1.1.12
+  TertiaryWLC: 1.1.1.13
+  Mode: Local
+  Switch: gld-idfa-as01
+  Port: Gi1/0/46
+  Cabling: Category6
+  PinOut: T568B
+  CablingVendor: Irish Communications
+  Vlan: 500
+  Status: Planning
+  Notes: .nan
+- Namespace: GDL_Campus
+  APName: FA-FL03-36
+  APModel: C9120AXI-E
+  APAntenna: .nan
+  APMount: .nan
+  Building: MAIN
+  Floor: 2
+  LocationDescription: SE Corner
+  APLoationMap: wireless-survey-ap-cabling-path.jpeg
+  PrimaryWLC: 1.1.1.11
+  SecondaryWLC: 1.1.1.12
+  TertiaryWLC: 1.1.1.13
+  Mode: Local
+  Switch: gld-idfa-as01
+  Port: Gi1/0/46
+  Cabling: Category6
+  PinOut: T568B
+  CablingVendor: Irish Communications
+  Vlan: 500
+  Status: Planning
+  Notes: .nan
+- Namespace: GDL_Campus
+  APName: FA-FL03-37
+  APModel: C9120AXI-E
+  APAntenna: .nan
+  APMount: .nan
+  Building: MAIN
+  Floor: 2
+  LocationDescription: SW Corner
+  APLoationMap: wireless-survey-ap-cabling-path.jpeg
+  PrimaryWLC: 1.1.1.11
+  SecondaryWLC: 1.1.1.12
+  TertiaryWLC: 1.1.1.13
+  Mode: Local
+  Switch: gld-idfa-as01
+  Port: Gi1/0/46
+  Cabling: Category6
+  PinOut: T568B
+  CablingVendor: Irish Communications
+  Vlan: 500
+  Status: Planning
+  Notes: .nan
+- Namespace: GDL_Campus
+  APName: FA-FL03-38
+  APModel: C9120AXI-E
+  APAntenna: .nan
+  APMount: .nan
+  Building: MAIN
+  Floor: 2
+  LocationDescription: SW Corner
+  APLoationMap: wireless-survey-ap-cabling-path.jpeg
+  PrimaryWLC: 1.1.1.11
+  SecondaryWLC: 1.1.1.12
+  TertiaryWLC: 1.1.1.13
+  Mode: Local
+  Switch: gld-idfa-as01
+  Port: Gi1/0/46
+  Cabling: Category6
+  PinOut: T568B
+  CablingVendor: Irish Communications
+  Vlan: 500
+  Status: Planning
+  Notes: .nan
+- Namespace: GDL_Campus
+  APName: FA-FL03-39
+  APModel: C9120AXI-E
+  APAntenna: .nan
+  APMount: .nan
+  Building: MAIN
+  Floor: 2
+  LocationDescription: SW Corner
+  APLoationMap: wireless-survey-ap-cabling-path.jpeg
+  PrimaryWLC: 1.1.1.11
+  SecondaryWLC: 1.1.1.12
+  TertiaryWLC: 1.1.1.13
+  Mode: Local
+  Switch: gld-idfa-as01
+  Port: Gi1/0/46
+  Cabling: Category6
+  PinOut: T568B
+  CablingVendor: Irish Communications
+  Vlan: 500
+  Status: Planning
+  Notes: .nan
+- Namespace: GDL_Campus
+  APName: FA-FL03-40
+  APModel: C9120AXI-E
+  APAntenna: .nan
+  APMount: .nan
+  Building: MAIN
+  Floor: 2
+  LocationDescription: SW Corner
+  APLoationMap: wireless-survey-ap-cabling-path.jpeg
+  PrimaryWLC: 1.1.1.11
+  SecondaryWLC: 1.1.1.12
+  TertiaryWLC: 1.1.1.13
+  Mode: Local
+  Switch: gld-idfa-as01
+  Port: Gi1/0/46
+  Cabling: Category6
+  PinOut: T568B
+  CablingVendor: Irish Communications
+  Vlan: 500
+  Status: Planning
+  Notes: .nan

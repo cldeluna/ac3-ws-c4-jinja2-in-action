@@ -1,0 +1,11 @@
+# templates/ospf.j2
+router ospf {{ ospf_process_id }}
+ router-id {{ router_id }}
+ {% for network in ospf_networks %}
+ network {{ network.prefix }} {{ network.wildcard }} area {{ network.area }}
+ {% endfor %}
+ {% if redistribute %}
+ {% for protocol in redistribute %}
+ redistribute {{ protocol }}
+ {% endfor %}
+ {% endif %}

@@ -1,0 +1,29 @@
+! Control Structures
+{# Typical Comments #}
+
+! For Loops
+{% for intf in intf_list %}
+    {{ intf }}
+{% endfor %}
+
+
+! If/else if/ else
+
+{% if maxstack is defined %}
+{% set ms_int=maxstack | int %}
+Variable maxstack has been recast to integer {{ ms_int }}
+{% if ms_int > 8 %}
+    Legacy Stack is too big!
+{% elif ms_int > 0 and ms_int < 1 %}
+    Stack Size is Good
+{% else %}
+    ERROR...BAD Stack Size {{ maxstack }}
+{% endif %}
+{% else %}
+    Expected maxstack variable is NOT DEFINED
+{% endif %}
+
+! Filter
+{% filter upper %}
+    This text becomes uppercase
+{% endfilter %}

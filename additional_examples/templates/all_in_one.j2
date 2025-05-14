@@ -1,0 +1,22 @@
+! Template for use with the all in one function
+!
+====== Process the payload dictionary in using Jinja control statements and filters ======
+Nested FOR loop with example of embedded list comprehension using Jinja filters iterable and string
+{% for key,val in payload_dict.items() %}
+! {{ key }}
+{% for item in (val if val is iterable and val is not string else [val]) %}
+   {{ item }}
+{% endfor %}
+
+{% endfor %}
+
+------------------------------------ RAW payload_dict -------------------------------------
+{{ payload_dict }}
+
+
+------------------------------------ payload_dict pretty print ----------------------------
+{{ payload_dict|pprint }}
+
+
+------------------------------------ RAW payload_dict to json ------------------------------
+{{ payload_dict|tojson(indent=2) }}

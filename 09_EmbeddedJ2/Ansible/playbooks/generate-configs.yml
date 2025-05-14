@@ -1,0 +1,15 @@
+---
+- name: Generate switch configurations
+  hosts: all
+  connection: local
+  tasks:
+    - name: Create config directory
+      ansible.builtin.file:
+        path: configs/
+        state: directory
+        
+    - name: Generate switch configs
+      ansible.builtin.template:
+        src: ../templates/base.j2
+        dest: "../configs/{{ inventory_hostname }}_cfg.txt"
+

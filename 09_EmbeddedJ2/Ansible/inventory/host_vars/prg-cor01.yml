@@ -1,0 +1,29 @@
+---
+hostname: prg-cor01
+mlag:
+  domain_id: 1000
+  peer_ip: 192.0.2.1  # /31 subnet
+  local_ip: 192.0.2.0/31
+  heartbeat_interval: 2500
+  reload_delay: 150
+interfaces:
+  - name: Port-Channel1
+    description: MLAG_PEER
+    type: mlag_peer
+  - name: Ethernet2
+    description: SERVER01
+    ip: 10.10.10.1/24
+aaa:
+  username: autocon
+  password: autocon3
+ntp_servers:
+  - 203.0.113.1
+  - 198.51.100.1
+ospf:
+  router_id: 1.1.1.1
+  networks:
+    - 192.0.2.0/31
+    - 10.10.10.0/24
+loopback:
+  ip: 1.1.1.1/32
+

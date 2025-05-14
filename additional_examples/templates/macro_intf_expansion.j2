@@ -1,0 +1,28 @@
+{# Cisco IOS-XE Interface Expansion Macro #}
+
+{# Define the mapping dictionary for interface name expansions #}
+{% set interface_map = {
+    'Twe': 'TwentyFiveGigE',
+    'Tw': 'TwoGigabitEthernet',
+    'TenGigE': 'TenGigabitEthernet',
+    'Hu': 'HundredGigE',
+    'gigE': 'GigabitEthernet',
+    'GigE': 'GigabitEthernet',
+    'FastE': 'FastEthernet',
+    'Te': 'TenGigabitEthernet',
+    'Gi': 'GigabitEthernet',
+    'Fa': 'FastEthernet'
+} %}
+
+{% macro expand_interface(interface_name) -%}
+    {%- set ns = namespace(expanded=false) -%}
+    {%- for short_name, full_name in interface_map.items() if not ns.expanded -%}
+        {%- if interface_name.startswith(short_name) and not ns.expanded -%}
+            {{- full_name ~ interface_name[short_name|length:] -}}
+            {%- set ns.expanded = true -%}
+        {%- endif -%}
+    {%- endfor -%}
+    {%- if not ns.expanded -%}
+        {{- interface_name -}}
+    {%- endif -%}
+{%- endmacro %}

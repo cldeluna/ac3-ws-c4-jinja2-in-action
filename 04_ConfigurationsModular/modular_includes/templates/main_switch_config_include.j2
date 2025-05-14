@@ -1,0 +1,15 @@
+{#- main_switch_config_include.j2 -#}
+!Main Switch Configuration Template (Includes)
+
+! Include base with global commands
+{% include "global_switch_config_include.j2" %}
+
+! Include user interfaces
+{% block user_interface %}
+{% include "user_interface_config_include.j2" %}
+{% endblock %}
+
+! Include aaa/tacacs
+{% block tacacs_config %}
+{% include "tacacs_server_config_include.j2" %}
+{% endblock %}

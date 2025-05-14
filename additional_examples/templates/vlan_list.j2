@@ -1,0 +1,7 @@
+! Layer 2 Vlan Template
+! using a List of Lists
+
+{% for line in mylistvar %}
+vlan {{ line[0] }}
+  name {{ line[1] }}
+{% endfor %}
