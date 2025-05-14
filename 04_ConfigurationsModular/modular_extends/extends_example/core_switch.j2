@@ -1,0 +1,12 @@
+{% extends "base_device.j2" %}
+
+{% block interfaces %}
+interface Loopback0
+  ip address {{ loopback_ip }} 255.255.255.255
+{% endblock %}
+
+{% block routing %}
+router ospf 10
+  router-id {{ ospf_router_id }}
+  network {{ network }} area 0
+{% endblock %}
