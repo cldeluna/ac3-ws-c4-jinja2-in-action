@@ -1,0 +1,5 @@
+﻿site,hostname,mgmt-subnet_cidr,mgmt_ip,mgmt_vlan,use_mgmt_intf_bool,sw_location,timezone,timezone_offset,summertime_bool,summertime_start_stop,sw_model,,,
+LAX_Campus,lax-asw01,192.168.10.0/24,192.168.10.5,10,FALSE,America/Los_Angeles,PST,-8,TRUE,3 Sun Oct 2:00 1 Sun Apr 2:00,C9300L-24P-4X,,,
+LAX_Campus,lax-asw02,192.168.10.0/24,192.168.10.6,10,FALSE,America/Los_Angeles,PST,-8,TRUE,3 Sun Oct 2:00 1 Sun Apr 2:00,C9300L-48P-4X,,,
+LAX_Campus,lax-asw03,192.168.10.0/24,192.168.10.7,10,FALSE,America/Los_Angeles,PST,-8,TRUE,3 Sun Oct 2:00 1 Sun Apr 2:00,WS-C3850-48F-E,,,
+LAX_Campus,lax-asw04,192.168.10.0/24,192.168.10.8,10,FALSE,America/Los_Angeles,PST,-8,TRUE,3 Sun Oct 2:00 1 Sun Apr 2:00,WS-C3850-48F-E,,,

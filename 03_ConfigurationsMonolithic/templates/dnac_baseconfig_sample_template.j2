@@ -1,0 +1,98 @@
+! Access Switch Configuration for location {{ cfg['location'] }}
+! Access Switch Hostname is {{ cfg['hostname'] }}
+! Using Template: DNAC Sample Jinja Template Base Config
+! Configuration Generated {{ cfg['timestamp'] }}
+! -----------------------------------------------------------------
+!
+no service pad
+service timestamps debug datetime msec localtime
+service timestamps log datetime msec localtime
+service password-encryption
+!
+hostname {{ cfg['hostname'] }}
+
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret {{ cfg['enable_sec'] }}
+!
+!
+!
+aaa new-model
+!
+!
+aaa authentication login default group tacacs+ enable none
+aaa authentication login console enable none
+aaa authentication enable default group tacacs+ enable none
+aaa authorization exec default group tacacs+ none
+aaa authorization exec console none
+
+aaa authorization commands 15 default group tacacs+ none
+!
+!
+!
+aaa session-id common
+clock timezone {{ cfg['timezone'] }} {{ cfg['timezone_offset'] }}
+{% if cfg['summertime_bool'] %}
+clock summer-time {{ cfg['timezone'] }} recurring  {{ cfg['summertime_start_stop'] }}
+{% endif %}
+
+vtp mode off
+!
+no ip source-route
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan {{ cfg['mgmt_vlan'] }}
+ name {{ cfg['mgmt_vlan_name'] }}
+!
+!
+ip ssh version 2
+!
+! The interface question
+! What model?
+{#
+{% block interfaces %}
+{% endblock %}
+#}
+interface range GigabitEthernet1/0/1 - {{ cfg['max_intfs'] }}
+ description Access port with NAC
+ switchport access vlan {{ cfg['mgmt_vlan'] }}
+ switchport mode access
+ access-session port-control auto
+ dot1x pae authenticator
+ authentication event fail action next-method
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication timer reauthenticate 3600
+ authentication violation replace
+ mab
+ spanning-tree portfast
+
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan{{ cfg['mgmt_vlan'] }}
+ ip address {{ cfg['mgmt_ip'] }} {{ cfg['mgmt_mask'] }}
+ no ip route-cache
+!
+no ip http server
+no ip http secure-server
+
+line con 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 15
+ login authentication default
+ transport input ssh
+ transport output ssh
+!
+end
