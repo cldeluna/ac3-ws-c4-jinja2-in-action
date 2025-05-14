@@ -1,0 +1,15 @@
+name: {{ cfg['name'] }}
+
+topology:
+
+  nodes:
+  {%- for node, node_data in cfg['nodes'].items() %}
+    {{ node }}:
+      kind: {{ node_data['kind'] }}
+      image: {{ node_data['image'] }}
+  {%- endfor %}
+
+  links:
+  {%- for link in cfg['links'] %}
+    - endpoints: {{ link['endpoints'] }}
+  {%- endfor %}
