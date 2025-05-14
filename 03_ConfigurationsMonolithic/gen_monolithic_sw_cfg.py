@@ -73,13 +73,14 @@ def main():
             # editors
             filename = f"{cfg_dict['hostname']}_{file_timestamp}.txt"
 
-            cfg_file_fullpath = os.path.join(cfg_directory, filename)
+            # Create output directory and set the full path
+            fullpath = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
 
             rendered = utils.render_in_one("dnac_baseconfig_sample_template.j2", cfg_dict)
 
             print(f"\tGenerating configuration for {filename}")
 
-            utils.save_file(cfg_file_fullpath, rendered)
+            utils.save_file(fullpath, rendered)
 
         print(f"\nSaved files in {cfg_directory}\n")
 
