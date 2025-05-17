@@ -15,6 +15,7 @@ __license__ = "Python"
 import argparse
 import sys
 import os
+import shutil
 
 
 def check_python_version():
@@ -78,12 +79,40 @@ def check_ansible():
         suggest_fix("ansible")
 
 
+def check_diagrams_and_graphviz():
+    print("\n📊 Checking for 'diagrams' and 'graphviz' modules...")
+
+    # Check Python package: diagrams
+    try:
+        import diagrams
+        print("✅ 'diagrams' module is available.")
+    except ImportError:
+        print("❌ 'diagrams' is not installed.")
+        suggest_fix("diagrams")
+
+    # Check Python package: graphviz
+    try:
+        import graphviz
+        print("✅ 'graphviz' module is available.")
+    except ImportError:
+        print("❌ 'graphviz' is not installed.")
+        suggest_fix("graphviz")
+
+    # Check system 'dot' command (optional but useful for rendering)
+    dot_path = shutil.which("dot")
+    if dot_path:
+        print(f"✅ 'dot' command (Graphviz binary) found at: {dot_path}")
+    else:
+        print("⚠️  'dot' system binary not found in PATH. Rendering with 'diagrams' may fail.")
+        print("   ➤ Visit https://graphviz.org/download/ to install it.")
+
 def main():
     print("🔍 Checking repository environment...\n")
     check_python_version()
     check_virtualenv()
     check_jinja2()
     check_ansible()
+    check_diagrams_and_graphviz()
     test_utils_import()
 
 
