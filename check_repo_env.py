@@ -36,12 +36,13 @@ def check_jinja2():
         print("❌ 'jinja2' is not installed in the current environment.")
         suggest_fix()
 
-def suggest_fix():
+def suggest_fix(package_name):
     print()
-    print("💡 Suggested fix:")
+    print(f"💡 Suggested fix for missing '{package_name}':")
     print("   From the top-level repository directory, run:")
     print("     uv pip install -e .")
-    print("   Make sure your pyproject.toml declares jinja2 as a dependency.")
+    print(f"   Make sure your pyproject.toml includes '{package_name}' under [project.dependencies]")
+
 
 def suggest_fix_utils():
     print()
@@ -66,11 +67,23 @@ def test_utils_import():
         suggest_fix_utils()
 
 
+def check_ansible():
+    print("\n🛠️ Checking for Ansible...")
+    try:
+        import ansible
+        version = getattr(ansible, '__version__', 'unknown')
+        print(f"✅ 'ansible' module is available. Version: {version}")
+    except ImportError:
+        print("❌ 'ansible' is not installed in the current environment.")
+        suggest_fix("ansible")
+
+
 def main():
     print("🔍 Checking repository environment...\n")
     check_python_version()
     check_virtualenv()
     check_jinja2()
+    check_ansible()
     test_utils_import()
 
 
