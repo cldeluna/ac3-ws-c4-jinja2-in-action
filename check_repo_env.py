@@ -106,6 +106,28 @@ def check_diagrams_and_graphviz():
         print("⚠️  'dot' system binary not found in PATH. Rendering with 'diagrams' may fail.")
         print("   ➤ Visit https://graphviz.org/download/ to install it.")
 
+
+def check_requests_and_people_in_space():
+    print("\n🌐 Checking 'requests' module and space API...")
+
+    try:
+        import requests
+        print("✅ 'requests' module is available.")
+        url = "http://api.open-notify.org/astros.json"
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            num_people = data.get("number", "unknown")
+            print(f"🚀 There are currently {num_people} people in space.")
+        else:
+            print(f"⚠️  Unable to fetch astronaut data. Status code: {response.status_code}")
+    except ImportError:
+        print("❌ 'requests' is not installed.")
+        suggest_fix("requests")
+    except Exception as e:
+        print(f"⚠️  Error querying the people-in-space API: {e}")
+
+
 def main():
     print("🔍 Checking repository environment...\n")
     check_python_version()
@@ -113,6 +135,7 @@ def main():
     check_jinja2()
     check_ansible()
     check_diagrams_and_graphviz()
+    check_requests_and_people_in_space()
     test_utils_import()
 
 
