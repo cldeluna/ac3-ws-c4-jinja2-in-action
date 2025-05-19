@@ -23,6 +23,7 @@ xArchive
 *.pptx
 *.docx
 *starter*
+*.log
 *.jpg
 *.xlsx
 *vault*
