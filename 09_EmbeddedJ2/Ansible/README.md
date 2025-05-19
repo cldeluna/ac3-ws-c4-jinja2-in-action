@@ -48,7 +48,7 @@ ansible-playbook -i inventory/hosts playbooks/generate-configs.yml
 
 
 ```bash
-% ansible-playbook -i inventory/hosts playbooks/generate-configs.yml
+%  uv run ansible-playbook -i inventory/hosts playbooks/generate-configs.yml
 
 
 PLAY [Generate switch configurations] **********************************************************************************
@@ -72,7 +72,7 @@ prg-cor02                  : ok=2    changed=1    unreachable=0    failed=0    s
 
 
 
-Ansible will work a little differently in our uv environment.
+Ansible may work a little differently in our uv environment.
 
 ```python
 uv venv
