@@ -21,10 +21,10 @@ import re
 
 from diagrams import Diagram, Edge
 from diagrams.generic.network import Router
+from typing import Optional, Dict, Any
 
 
-
-def replace_special_chars(text):
+def replace_special_chars(text: str) -> str:
     """
     Replace spaces and special characters in the provided text string with underscores
     :param text:
@@ -34,7 +34,7 @@ def replace_special_chars(text):
     return re.sub(r"[^a-zA-Z0-9]", "_", text)
 
 
-def load_json(filename):
+def load_json(filename: str) ->  Optional[Dict[str, Any]]:
     """
     Safely load a JSON file
     :param filename:
@@ -54,7 +54,7 @@ def load_json(filename):
     return None
 
 
-def save_file(fn, text):
+def save_file(fn: str, text: str) -> str:
     """
     Simple funciton to save text to a file fn
     :param fn: filename or full path filename
@@ -67,7 +67,11 @@ def save_file(fn, text):
     return fn
 
 
-def create_bgp_diagram(bgp_sessions, filename="bgp_sessions", outformat="png"):
+def create_bgp_diagram(
+            bgp_sessions: list,
+            filename: str = "bgp_sessions",
+            outformat: str = "png"
+    ) -> None:
     """
     Given a list of dictionaries in bgp_sessions with local and peer information, draw a diagram which
     shows each peering session including state and ASN
@@ -124,9 +128,7 @@ def create_bgp_diagram(bgp_sessions, filename="bgp_sessions", outformat="png"):
         print(f"{e}\n\n")
 
 
-
-
-def main():
+def main() -> None:
     print("\n======= EXECUTING BGP Report Script=======")
 
     # Step 1: Create Environment
