@@ -34,7 +34,7 @@ def replace_special_chars(text: str) -> str:
     return re.sub(r"[^a-zA-Z0-9]", "_", text)
 
 
-def load_json(filename: str) ->  Optional[Dict[str, Any]]:
+def load_json(filename: str) -> Optional[Dict[str, Any]]:
     """
     Safely load a JSON file
     :param filename:
@@ -56,7 +56,7 @@ def load_json(filename: str) ->  Optional[Dict[str, Any]]:
 
 def save_file(fn: str, text: str) -> str:
     """
-    Simple funciton to save text to a file fn
+    Simple function to save text to a file fn
     :param fn: filename or full path filename
     :param text:
     :return: fn
@@ -68,10 +68,8 @@ def save_file(fn: str, text: str) -> str:
 
 
 def create_bgp_diagram(
-            bgp_sessions: list,
-            filename: str = "bgp_sessions",
-            outformat: str = "png"
-    ) -> None:
+    bgp_sessions: list, filename: str = "bgp_sessions", outformat: str = "png"
+) -> None:
     """
     Given a list of dictionaries in bgp_sessions with local and peer information, draw a diagram which
     shows each peering session including state and ASN
@@ -138,14 +136,18 @@ def main() -> None:
 
         env = jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
-        print(f"Object env has been created using loader=jinja2.FileSystemLoader('templates')\n{env}\n")
+        # Tip: if you want to see the various methods availalbe to an object use dir(object)
         # print(dir(env))
+
+        print(
+            f"Object env has been created using loader=jinja2.FileSystemLoader('templates')\n{env}\n"
+        )
+
         print(f"Templates directory is {env.loader.searchpath}\n")
         print(f"Loader is {env.loader}\n")
         print(f"lstrip_blocks is {env.lstrip_blocks}\n")
         print(f"trim_blocks is {env.trim_blocks}\n")
         print(f"keep_trailing_newline is {env.keep_trailing_newline}\n")
-
 
     # TODO: Future: Add option to use a custom template
     # ====  START Example of an interactive CLI to pick the template
@@ -194,7 +196,9 @@ def main() -> None:
         print(f"\nLoading data from {data_fn}")
         data = load_json(data_fn)
 
-        print(f"\nCalculating all_peers_up, ibgp_count, ebgp_count from data of type {type(data)} from file {data_fn}")
+        print(
+            f"\nCalculating all_peers_up, ibgp_count, ebgp_count from data of type {type(data)} from file {data_fn}"
+        )
 
         # Boolean to see if all sessions are up
         all_peers_up = True
@@ -208,7 +212,6 @@ def main() -> None:
             else:
                 ebgp_count += 1
 
-
         print("\nCreating BGP diagram from data")
         # Define a filename for the Markdown report and the resulting diagram
         drawing_filename = f"{replace_special_chars(arguments.location)}_BGP_Diagram"
@@ -217,7 +220,6 @@ def main() -> None:
         if data:
             create_bgp_diagram(data, filename=drawing_filename, outformat=outformat)
             print(f"\nDiagram saved as {drawing_filename}.{outformat}\n")
-
 
     # Step 3  Render the template
     if arguments.step <= 3:
