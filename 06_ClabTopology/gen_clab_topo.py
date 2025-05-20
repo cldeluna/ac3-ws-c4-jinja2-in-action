@@ -21,7 +21,7 @@ import zlib
 import base64
 import argparse
 import webbrowser
-
+from logging import exception
 
 # # This is necessary because I want to import functions in a file called utils.py and that file is one level up
 # # from here
@@ -149,19 +149,23 @@ def main():
         payload = utils.load_json(local_filename)
     else:
         # Get topology for the provided namespace from SuzieQ REST
-        response = utils.get_topology(arguments.namespace)
-        if response.ok:
-            # Saving the response so we hae a local copy of the data, just in case
-            if response.json():
-                utils.save_json_payload(
-                    response.json(),
-                    f"topology_response_from_suzieq_{utils.file_timestamp()}.json",
-                )
-        else:
-            print(response)
+
+        try:
+            response = utils.get_topology(arguments.namespace)
+
+            if response.ok:
+                # Saving the response so we hae a local copy of the data, just in case
+
+                if response.json():
+                    utils.save_json_payload(
+                        response.json(),
+                        f"topology_response_from_suzieq_{utils.file_timestamp()}.json",
+                    )
+            else:
+                print(f"{response.status_code} Reason: {response.reason} ")
+        except Exception as e:
             exit(
                 f"\n\nAborting Run! Cannot access SuzieQ API! Status Code: "
-                f"{response.status_code} Reason: {response.reason} "
                 f"\nPlease make sure you have an .env file at the top level of your repository and a valdi token in "
                 f"the environment variable SQ_API_TOKEN. \nRename .env_sample to .env\n\n"
             )
