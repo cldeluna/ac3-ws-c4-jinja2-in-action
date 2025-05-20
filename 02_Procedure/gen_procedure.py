@@ -20,6 +20,7 @@ import datetime
 import pprint
 
 
+### This is no longer necessary because we are using uv and utils is now a module
 # # This is necessary because I want to import functions in a file called utils.py and that file is one level up
 # # from here
 # # Get the absolute path of the top level main repository
@@ -33,6 +34,7 @@ import pprint
 #     print(f"Move this script up a level to execute.")
 #     exit("Aborting run!")
 
+# Import all the functions from the local utils module
 from utils import utils
 
 
@@ -100,13 +102,13 @@ def main():
 
     # Define the filename
     # Remove special characters from location including replacing spaces with underscores
-    location = utils.replace_special_chars(payload_dict['location'])
-    filename = (
-        f"{location}_ORDR_Appliance_Installation_{file_timestamp}.md"
-    )
+    location = utils.replace_special_chars(payload_dict["location"])
+    filename = f"{location}_ORDR_Appliance_Installation_{file_timestamp}.md"
 
     # Create output directory and set the full path
-    procedure_fp = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
+    procedure_fp = utils.create_output_dir_fp(
+        os.getcwd(), arguments.output_dir, filename
+    )
 
     if procedure_fp:
         # Save the rendered content to the file
@@ -125,7 +127,7 @@ if __name__ == "__main__":
     # parser.add_argument('all', help='Execute all exercises in week 4 assignment')
     parser.add_argument(
         "payload_file",
-        help="YAML Payload file to use. Default: Installation_details_S2000.yml"
+        help="YAML Payload file to use. Default: Installation_details_S2000.yml",
     )
 
     parser.add_argument(
