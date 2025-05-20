@@ -21,11 +21,31 @@ import pytz
 from utils import utils
 
 
-
 def main():
+    """
+    Main function for generating configuration files from a CSV file.
+
+    Parameters
+    ----------
+    arguments : argparse.Namespace
+        The arguments parsed from the command line.
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+    This function reads in the CSV file, processes the data, and generates
+    configuration files for each switch in the file. The files are saved in
+    the directory specified by the `--output_dir` argument.
+
+    """
 
     # Get the current date and time
-    now = datetime.datetime.now(pytz.timezone(arguments.timezone))  # Replace with your timezone
+    now = datetime.datetime.now(
+        pytz.timezone(arguments.timezone)
+    )  # Replace with your timezone
 
     # Format it as a string
     timestamp = now.strftime("%B %d, %Y at %I:%M:%S %p %Z")
@@ -35,7 +55,9 @@ def main():
 
     # Load the data in the CSV file
     payload_data = utils.load_csv(os.path.join(os.getcwd(), arguments.payload_file))
-    print(f"\nGenerating configurations for switches in CSV file {arguments.payload_file}\n")
+    print(
+        f"\nGenerating configurations for switches in CSV file {arguments.payload_file}\n"
+    )
 
     if payload_data:
         # We have read in a CSV file with the first row as the header and then one ore more lines of new switches
@@ -53,9 +75,9 @@ def main():
 
             # Determine Max user interfaces from model number
             # Is this the best way to do this?  No.
-            if "24" in cfg_dict['sw_model']:
+            if "24" in cfg_dict["sw_model"]:
                 max_intfs = 24
-            elif "8" in cfg_dict['sw_model']:
+            elif "8" in cfg_dict["sw_model"]:
                 max_intfs = 8
             else:
                 max_intfs = 48
@@ -63,20 +85,26 @@ def main():
             cfg_dict.update({"max_intfs": max_intfs})
 
             # Determine mask in dotted notation get_mask_from_cidr(cidr)
-            cfg_dict.update({"mgmt_mask": utils.get_mask_from_cidr(cfg_dict['mgmt-subnet_cidr'])})
+            cfg_dict.update(
+                {"mgmt_mask": utils.get_mask_from_cidr(cfg_dict["mgmt-subnet_cidr"])}
+            )
 
             # Check to see if the output directory exists and if it does not, create it
             # This is the directory where we will store the resulting config files
-            cfg_directory = os.path.join(os.getcwd(),arguments.output_dir)
+            cfg_directory = os.path.join(os.getcwd(), arguments.output_dir)
             utils.check_and_create_directory(cfg_directory)
             # Create the resulting template filename with timestamp. Using txt so its easy to open with default
             # editors
             filename = f"{cfg_dict['hostname']}_{file_timestamp}.txt"
 
             # Create output directory and set the full path
-            fullpath = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
+            fullpath = utils.create_output_dir_fp(
+                os.getcwd(), arguments.output_dir, filename
+            )
 
-            rendered = utils.render_in_one("dnac_baseconfig_sample_template.j2", cfg_dict)
+            rendered = utils.render_in_one(
+                "dnac_baseconfig_sample_template.j2", cfg_dict
+            )
 
             print(f"\tGenerating configuration for {filename}")
 
