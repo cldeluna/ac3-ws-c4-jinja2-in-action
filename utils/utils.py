@@ -39,13 +39,15 @@ import pandas as pd
 from diagrams import Diagram, Edge
 from diagrams.generic.network import Router
 
+from typing import Any, Union, Optional, Dict, List
+
 # Disable  Unverified HTTPS request is being made to host messages
 requests.packages.urllib3.disable_warnings(
     requests.packages.urllib3.exceptions.InsecureRequestWarning
 )
 
 
-def country_code_info(iso3letter="CZE"):
+def country_code_info(iso3letter: str = "CZE") -> str:
 
     print("\nPython version:")
     print(".".join(map(str, sys.version_info[:3])))
@@ -79,7 +81,7 @@ def country_code_info(iso3letter="CZE"):
     return iso_country
 
 
-def is_user_intf(intf):
+def is_user_intf(intf: Any) -> bool:
     """
     Cisco centric interface test to see if an interface is a user interface
     (typically like 1/0/21) vs an uplink (typically like 1/1/1)
@@ -113,7 +115,7 @@ def load_json(filename):
     return None
 
 
-def load_yaml(filename):
+def load_yaml(filename: str) -> Any:
     """
     Load a YAML file safely
     :param filename:
@@ -125,7 +127,7 @@ def load_yaml(filename):
     return data
 
 
-def load_csv(filename):
+def load_csv(filename: str) -> Any:
     """
     Given a path fo a file including filename, safely opens a CSV file and returns either None if it
     cannot open the file or returns the data in the file as a list (each element of the list is a row from
@@ -148,7 +150,7 @@ def load_csv(filename):
     return None
 
 
-def save_file(fn, text):
+def save_file(fn: Any, text: str) -> Any:
     """
     Simple funciton to save text to a file fn
     :param fn: filename or full path filename
@@ -161,7 +163,7 @@ def save_file(fn, text):
     return fn
 
 
-def save_json_payload(payload, filename):
+def save_json_payload(payload: dict, filename: str) -> Any:
     """
     Save a JSON payload to a file.
 
@@ -182,7 +184,7 @@ def save_json_payload(payload, filename):
         print(f"Error encoding JSON: {e}")
 
 
-def check_and_create_directory(directory_path):
+def check_and_create_directory(directory_path: str) -> bool:
     """
     Simple function which check to see if a directory exists and if it does not it creates it
     :param directory_path:
@@ -194,7 +196,7 @@ def check_and_create_directory(directory_path):
     return False
 
 
-def lists_to_dicts(data):
+def lists_to_dicts(data: Union[list, dict]) -> Any:
     """
     Takes in a CSV file with a header row as the first row and one ore more 'data' rows and builds and returns
     a list of dictionaries
@@ -206,8 +208,12 @@ def lists_to_dicts(data):
 
 
 def jenv_filesystem(
-    search_dir="templates", line_comment="##", ktn=False, lsb=False, tb=False
-):
+    search_dir: Any = "templates",
+    line_comment: Any = "##",
+    ktn: Any = False,
+    lsb: Any = False,
+    tb: Any = False,
+) -> Any:
     """
 
     RECOMMENDED when getting started!
@@ -315,7 +321,7 @@ def jenv_filesystem(
     return env
 
 
-def load_jtemplate(jenv_obj, template_file_name):
+def load_jtemplate(jenv_obj: Any, template_file_name: str) -> Any:
     """
     This function takes two arguments:
     1. A Jinja2 Environment Object
@@ -341,8 +347,11 @@ def load_jtemplate(jenv_obj, template_file_name):
 
 
 def render_in_one(
-    template_file_name, payload_dict, search_dir="templates", line_comment="!"
-):
+    template_file_name: str,
+    payload_dict: dict,
+    search_dir: Any = "templates",
+    line_comment: Any = "!",
+) -> Any:
     """
     Inspired by:
     https://daniel.feldroy.com/posts/jinja2-quick-load-function
@@ -368,7 +377,7 @@ def render_in_one(
     return jtemplate.render(cfg=payload_dict)
 
 
-def get_mask_from_cidr(cidr):
+def get_mask_from_cidr(cidr: Any) -> Any:
     """
     Given a subnet in cidr notation return the network mask in dotted notation
     :param cidr:
@@ -378,7 +387,7 @@ def get_mask_from_cidr(cidr):
     return str(network.netmask)
 
 
-def get_first_ip(cidr):
+def get_first_ip(cidr: Any) -> Any:
     """
     Given a subnet in cidr notation return the first valid IP
     :param cidr:
@@ -389,7 +398,7 @@ def get_first_ip(cidr):
     return str(first_ip)
 
 
-def get_fourth_ip(cidr):
+def get_fourth_ip(cidr: Any) -> Any:
     """
     Given a subnet in cidr notation return the fourth valid IP
     Note: this should really just be one function which takes in the offset from the network
@@ -401,7 +410,7 @@ def get_fourth_ip(cidr):
     return str(fourth_ip) if fourth_ip else None
 
 
-def add_business_days(start_date, business_days):
+def add_business_days(start_date: Any, business_days: Any) -> Any:
     """
     This helper function takes a start date and the number of business days to add. It iterates through the calendar,
     skipping weekends, until it has counted the specified number of business days.
@@ -418,7 +427,7 @@ def add_business_days(start_date, business_days):
     return end_date
 
 
-def calculate_future_business_date(business_days):
+def calculate_future_business_date(business_days: Any) -> Any:
     """
     This is the main function that uses today's date as the starting point and calls add_business_days
     to calculate the future date.
@@ -434,7 +443,7 @@ def calculate_future_business_date(business_days):
     return add_business_days(today, business_days)
 
 
-def create_std_cr_snow(snow_dict):
+def create_std_cr_snow(snow_dict: Any) -> Any:
     """
     Example of function using Vault for SNOW creds
     :param snow_dict:
@@ -488,7 +497,7 @@ def create_std_cr_snow(snow_dict):
 
 
 # Hashicorp Local Vault
-def get_secret(URL, ROOT_TOKEN, PATH="dev_snow/config"):
+def get_secret(URL: str, ROOT_TOKEN: Any, PATH: str = "dev_snow/config") -> Any:
     """
     Note: not used in repo currently
     Function to extract secrets from a local dev Vault instance
@@ -516,7 +525,7 @@ def get_secret(URL, ROOT_TOKEN, PATH="dev_snow/config"):
         raise Exception("Vault authentication failed")
 
 
-def get_username():
+def get_username() -> Any:
     """
     Cross os function to get username from Mac OSX, Windows, and Linux.
     If can't get from ENV VAR looks at home directory.
@@ -542,7 +551,7 @@ def replace_special_chars(text):
     return re.sub(r"[^a-zA-Z0-9]", "_", text)
 
 
-def set_os_env(var_name, var_value):
+def set_os_env(var_name: str, var_value: Any) -> Any:
     """
     Sets an environment variable using the Python built in os module
 
@@ -553,7 +562,7 @@ def set_os_env(var_name, var_value):
     os.environ[var_name] = var_value
 
 
-def get_os_env(var_name):
+def get_os_env(var_name: str) -> str:
     """
     Returns the requested environment variable
     :param var_name: the environment variable to fetch from memory
@@ -566,7 +575,7 @@ def get_os_env(var_name):
         return ""
 
 
-def try_sq_rest_call(uri_path, url_options, debug=False):
+def try_sq_rest_call(uri_path: str, url_options: str, debug: Any = False) -> Any:
     """
     REUSABLE BASE SuzieQ API REST Call
     :param uri_path:
@@ -618,7 +627,7 @@ def try_sq_rest_call(uri_path, url_options, debug=False):
     return response
 
 
-def get_sq_health():
+def get_sq_health() -> Any:
     # Trick to get a unique list of namespaces for the pull down
     URI_PATH = "/api/healte"
     URL_OPTIONS = f""
@@ -627,7 +636,7 @@ def get_sq_health():
     return response
 
 
-def get_namespace_list():
+def get_namespace_list() -> Any:
     """
     This function pulls all the namespaces available in SuzieQ.
     :return: a list of the namesapces and the full response
@@ -660,7 +669,7 @@ def get_namespace_list():
     return namespace_list, ns_response
 
 
-def get_device_list(nsx):
+def get_device_list(nsx: Any) -> Any:
     """
     This function pulls the device data for a namespace in SuzieQ.
     :param nsx:
@@ -690,7 +699,7 @@ def get_device_list(nsx):
     return device_list, response
 
 
-def get_topology(namespace, via="lldp"):
+def get_topology(namespace: str, via: Any = "lldp") -> Any:
     """
     This function pulls the LLDP topology data for a namespace in SuzieQ.
 
@@ -724,7 +733,7 @@ def get_topology(namespace, via="lldp"):
     return response
 
 
-def extract_numeric_portion(interface):
+def extract_numeric_portion(interface: Any) -> Any:
     """
     Used in the Containerlab topology build to extract the numeric portion of an interface
 
@@ -739,7 +748,7 @@ def extract_numeric_portion(interface):
 
 
 # ------------------ SUZIEQ EXTERNAL DB TABLE API CALLS --------------------------------
-def check_critical_vlan(vlanx, nsx, debug=False):
+def check_critical_vlan(vlanx: Any, nsx: Any, debug: Any = False) -> Any:
     """
     Check that a given vlanx is not in the critical_vlan extdb.
     If it is a critical vlan then it cannot be changed via self-service.
@@ -765,7 +774,7 @@ def check_critical_vlan(vlanx, nsx, debug=False):
     return sq_api_response
 
 
-def get_extdb(extdbx, nsx, debug=False):
+def get_extdb(extdbx: Any, nsx: Any, debug: Any = False) -> Any:
     """
     This function pulls the data from the given namespace in the given external db table
 
@@ -791,7 +800,7 @@ def get_extdb(extdbx, nsx, debug=False):
     return sq_api_response
 
 
-def find_vlan_on_switch(vlanx, switchx):
+def find_vlan_on_switch(vlanx: Any, switchx: Any) -> Any:
     """
     Call to SuzieQ Vlan how for a switch and vlan.
 
@@ -820,7 +829,7 @@ def find_vlan_on_switch(vlanx, switchx):
     return vlan_configured_on_sw, sq_api_response
 
 
-def check_stp_switch(vlanx, switch):
+def check_stp_switch(vlanx: Any, switch: Any) -> Any:
     """
     Call to SuzieQ STP show for a switch and vlan.
 
@@ -850,7 +859,7 @@ def check_stp_switch(vlanx, switch):
     return vlan_has_stp_root, sq_api_response
 
 
-def file_timestamp(dat_tim_delim="-"):
+def file_timestamp(dat_tim_delim: Any = "-") -> Any:
     """
     Returns the current time in a format suitable for file timestamps
     :return:
@@ -866,7 +875,7 @@ def human_readable_timestamp():
     return datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p")
 
 
-def extract_excel_to_csv(file_path):
+def extract_excel_to_csv(file_path: str) -> Any:
     """
     Function which takes in an EXCEL file with one or more tabs and extracts each tab into a CSV.
     Used to extract the design data for the 08 Capstone project.
@@ -899,7 +908,7 @@ def extract_excel_to_csv(file_path):
         print(f"Saved {csv_file_name}")
 
 
-def high_level_design_diagram():
+def high_level_design_diagram() -> Any:
     """
     Used to generate a "dummy" diagram for the 08 Design Document
     Note: Not part of the venv for the repot by default
@@ -952,7 +961,9 @@ def high_level_design_diagram():
     plt.close()
 
 
-def create_bgp_diagram(bgp_sessions, filename="bgp_sessions", outformat="png"):
+def create_bgp_diagram(
+    bgp_sessions: Any, filename: str = "bgp_sessions", outformat: Any = "png"
+) -> Any:
     """
     Given a list of dictionaries in bgp_sessions with local and peer information, draw a diagram which
     shows each peering session including state and ASN
@@ -997,7 +1008,7 @@ def create_bgp_diagram(bgp_sessions, filename="bgp_sessions", outformat="png"):
         print(f"{e}\n\n")
 
 
-def get_template_selection(options):
+def get_template_selection(options: Any) -> Any:
     """
     Example Only - Currently Not Used
     Function to enumerate templates in the templates directory for interactive user selection
@@ -1020,7 +1031,9 @@ def get_template_selection(options):
             print("Please enter a valid number.")
 
 
-def get_neo_data(start_date=None, end_date=None, api_key="YOUR_API_KEY"):
+def get_neo_data(
+    start_date: Any = None, end_date: Any = None, api_key: Any = "YOUR_API_KEY"
+) -> Any:
     """
     A python function which extracts near earth orbit objects from a nasa data set
     nd returns a JSON file with near earth objects for today's date
@@ -1062,7 +1075,7 @@ def get_neo_data(start_date=None, end_date=None, api_key="YOUR_API_KEY"):
         return None
 
 
-def json_to_yaml(input_json_file, output_yaml_file):
+def json_to_yaml(input_json_file: str, output_yaml_file: str) -> Any:
     """
     Function which reads in a JSON file and saves it as YAML
     :param input_json_file:
@@ -1080,7 +1093,7 @@ def json_to_yaml(input_json_file, output_yaml_file):
     print(f"\nSuccessfully converted {input_json_file} to {output_yaml_file}\n")
 
 
-def sort_filenames_by_length(filenames):
+def sort_filenames_by_length(filenames: str) -> Any:
     """
     Sort a list of filenames based on their length in ascending order.
 
@@ -1093,10 +1106,7 @@ def sort_filenames_by_length(filenames):
     return sorted(filenames, key=len)
 
 
-def create_output_dir_fp(local_cwd, output_dir_name, filename):
-
-    # Check to see if the output directory exists and if it does not, create it
-    # This is the directory where we will store the resulting config files
+def create_output_dir_fp(local_cwd: Any, output_dir_name: str, filename: str) -> Any:
     output_directory = os.path.join(local_cwd, output_dir_name)
     check_and_create_directory(output_directory)
 
@@ -1138,7 +1148,7 @@ def convert_excel_to_format(
     output_path: str = None,
     export_schema: bool = False,
     schema_output_path: str = None,
-):
+) -> Any:
     """
     Convert Excel file to YAML or JSON and optionally generate InfraHub-compatible schema.
 
