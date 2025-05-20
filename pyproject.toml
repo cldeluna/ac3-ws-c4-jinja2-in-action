@@ -18,4 +18,5 @@ dependencies = [
     "pytest-mock",
     "pytz>=2025.2",
     "ansible",
+    "black",
 ]
