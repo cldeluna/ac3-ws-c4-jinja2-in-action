@@ -52,7 +52,7 @@ def country_code_info(iso3letter="CZE"):
     print(f"Virtual environment path: {sys.prefix}\n")
 
     # REST call to restcountries.com API
-    response = requests.get('https://restcountries.com/v3.1/all')
+    response = requests.get("https://restcountries.com/v3.1/all")
     countries = response.json()
 
     print(f"\nNumber of countries: {len(countries)}\n")
@@ -66,7 +66,9 @@ def country_code_info(iso3letter="CZE"):
     for line in countries:
         if line["cca3"] == iso3letter:
             iso_country = line
-            print(f"\nFound country with CCA3 code: {iso3letter} {line['name']['official']}\n")
+            print(
+                f"\nFound country with CCA3 code: {iso3letter} {line['name']['official']}\n"
+            )
             pprint.pprint(line)
             break
     print()
@@ -75,7 +77,6 @@ def country_code_info(iso3letter="CZE"):
     pprint.pprint(list(countries[0].keys()))
 
     return iso_country
-
 
 
 def is_user_intf(intf):
@@ -1131,13 +1132,12 @@ def infer_infrahub_type(series: pd.Series) -> str:
     return "Text"
 
 
-
 def convert_excel_to_format(
     input_file: str,
     output_format: str = "yaml",
     output_path: str = None,
     export_schema: bool = False,
-    schema_output_path: str = None
+    schema_output_path: str = None,
 ):
     """
     Convert Excel file to YAML or JSON and optionally generate InfraHub-compatible schema.
@@ -1156,7 +1156,7 @@ def convert_excel_to_format(
     df = pd.read_excel(input_file, header=0)
 
     # Convert data
-    data = df.to_dict(orient='records')
+    data = df.to_dict(orient="records")
 
     # Determine output path
     output_format = output_format.lower()
@@ -1189,29 +1189,29 @@ def convert_excel_to_format(
                 "label": label,
                 "description": description,
                 "kind": kind,
-                "optional": df[col].isnull().any()
+                "optional": df[col].isnull().any(),
             }
 
             if kind == "Dropdown":
                 values = df[col].dropna().unique()
                 attr["options"] = {
-                    "choices": [{"label": str(v), "value": str(v)} for v in sorted(values)]
+                    "choices": [
+                        {"label": str(v), "value": str(v)} for v in sorted(values)
+                    ]
                 }
 
             attributes.append(attr)
 
         schema = {
-            "nodes": [{
-                "name": Path(input_file).stem.capitalize(),
-                "attributes": attributes
-            }]
+            "nodes": [
+                {"name": Path(input_file).stem.capitalize(), "attributes": attributes}
+            ]
         }
 
         with open(schema_output_path, "w", encoding="utf-8") as f:
             yaml.dump(schema, f, allow_unicode=True, sort_keys=False)
 
         print(f"Schema saved to: {schema_output_path}")
-
 
 
 def main():

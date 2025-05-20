@@ -50,7 +50,9 @@ def main():
     print("Checking SuzieQ API Heath.")
     sq_health_check = utils.get_sq_health()
     if not sq_health_check:
-        print("ERROR! Cannot connect to SuzieQ API. Please check server and connectivity.")
+        print(
+            "ERROR! Cannot connect to SuzieQ API. Please check server and connectivity."
+        )
         exit()
 
     # Date stamp for Report if one already exists
@@ -75,12 +77,12 @@ def main():
     sow.update({"data_lod": resp.json()})
 
     # Use a set comprehension to extract unique model values
-    unique_models = {item['APModel'] for item in resp.json() if 'APModel' in item}
+    unique_models = {item["APModel"] for item in resp.json() if "APModel" in item}
 
     sow.update({"models": list(unique_models)})
 
     # AP Placement Map List
-    maps = {item['APLoationMap'] for item in resp.json() if 'APLoationMap' in item}
+    maps = {item["APLoationMap"] for item in resp.json() if "APLoationMap" in item}
 
     sow.update({"maps": list(maps)})
 
@@ -91,9 +93,7 @@ def main():
     rendered_sow = utils.render_in_one(template_file, sow, line_comment="==")
 
     # Define the filename
-    filename = (
-        f"{namespace}_AP_Installation_Statement_of_Work_{file_timestamp}.md"
-    )
+    filename = f"{namespace}_AP_Installation_Statement_of_Work_{file_timestamp}.md"
 
     # Create output directory and set the full path
     sow_fp = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
@@ -104,9 +104,11 @@ def main():
 
 
 # Standard call to the main() function.
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Script Description",
-                                     epilog="Usage: ' python gen_sow.py' or 'uv run gen_sow.py' ")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script Description",
+        epilog="Usage: ' python gen_sow.py' or 'uv run gen_sow.py' ",
+    )
     arguments = parser.parse_args()
 
     parser.add_argument(

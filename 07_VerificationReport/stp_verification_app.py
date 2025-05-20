@@ -115,7 +115,9 @@ def main():
                 f"Please make sure you have a .env file at the top level of your repository and a valdi token in "
                 f"the environment variable SQ_API_TOKEN."
             )
-            st.info("There is an .env_sample file which can be renamed to .env and updated with the valid token.")
+            st.info(
+                "There is an .env_sample file which can be renamed to .env and updated with the valid token."
+            )
             st.stop()
 
         try:
@@ -199,7 +201,9 @@ def main():
                         sw_missing_vlan_list.append(sw)
                     # Saving the response so we hae a local copy of the data, just in case
                     if vlan_resp.json():
-                        utils.save_json_payload(vlan_resp.json(), "vlan_response_from_suzieq.json")
+                        utils.save_json_payload(
+                            vlan_resp.json(), "vlan_response_from_suzieq.json"
+                        )
 
                 # Check to see if the vlan is participating in spanning tree
                 stp_root_on_sw_bool, stp_resp = utils.check_stp_switch(vlan_id, sw)
@@ -208,7 +212,9 @@ def main():
 
                     df = pd.DataFrame(stp_resp.json())
                     if stp_root_on_sw_bool:
-                        st.write(f"Vlan {vlan_id} participating in STP and has root {sw}")
+                        st.write(
+                            f"Vlan {vlan_id} participating in STP and has root {sw}"
+                        )
                     else:
                         st.write(f"Vlan {vlan_id} STP has no root on {sw}")
                         stp_root_bool = False
@@ -217,7 +223,9 @@ def main():
 
                     # Saving the response so we hae a local copy of the data, just in case
                     if stp_resp.json():
-                        utils.save_json_payload(vlan_resp.json(), "stp_response_from_suzieq.json")
+                        utils.save_json_payload(
+                            vlan_resp.json(), "stp_response_from_suzieq.json"
+                        )
 
             if vlan_configured_bool:
                 msg = f":thumbsup: Vlan {vlan_id} is configured on all switches!"

@@ -17,6 +17,7 @@ import argparse
 
 from utils import utils
 
+
 def some_function():
     pass
 
@@ -25,17 +26,19 @@ def main():
 
     filename = arguments.file
     utils.convert_excel_to_format(
-        input_file=filename,
-        output_format="yaml",
-        export_schema=True
+        input_file=filename, output_format="yaml", export_schema=True
     )
 
+
 # Standard call to the main() function.
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Script Description",
-                                     epilog="Usage: ' python convert_xl.py' ")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script Description", epilog="Usage: ' python convert_xl.py' "
+    )
 
     # parser.add_argument('all', help='Execute all exercises in week 4 assignment')
-    parser.add_argument('-f', '--file', help='Excel file', action='store',default="GDL_NewAPs.xlsx")
+    parser.add_argument(
+        "-f", "--file", help="Excel file", action="store", default="GDL_NewAPs.xlsx"
+    )
     arguments = parser.parse_args()
     main()

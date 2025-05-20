@@ -32,6 +32,7 @@ import requests
 
 from utils import utils
 
+
 def create_std_cr_snow(
     instance,
     username,
@@ -136,12 +137,16 @@ def main():
         filename = f"{details_dict['location']}_NewVlan{details_dict['new_vlan']}_SNOW_STDCR.txt"
 
         # Create output directory and set the full path
-        cr_text_fp = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
+        cr_text_fp = utils.create_output_dir_fp(
+            os.getcwd(), arguments.output_dir, filename
+        )
 
         # Saving the output to a text file
         utils.save_file(cr_text_fp, rendered_string)
 
-        print(f"Saved resulting CR text to {filename} in {arguments.output_dir} directory")
+        print(
+            f"Saved resulting CR text to {filename} in {arguments.output_dir} directory"
+        )
 
         # Craft CR short description
 
@@ -201,7 +206,8 @@ def main():
 # Standard call to the main() function.
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Script Description", epilog="Usage: ' python gen_new_vlan_cr.py'  or 'uv run gen_new_vlan_cr.py' "
+        description="Script Description",
+        epilog="Usage: ' python gen_new_vlan_cr.py'  or 'uv run gen_new_vlan_cr.py' ",
     )
 
     parser.add_argument(

@@ -136,6 +136,7 @@ def view_mermaid_diagram(mermaid_code: str) -> None:
 
     return full_url
 
+
 def main():
     """
     Generate a Containerlab topology from a SuzieQ LLDP output
@@ -152,7 +153,10 @@ def main():
         if response.ok:
             # Saving the response so we hae a local copy of the data, just in case
             if response.json():
-                utils.save_json_payload(response.json(), f"topology_response_from_suzieq_{utils.file_timestamp()}.json")
+                utils.save_json_payload(
+                    response.json(),
+                    f"topology_response_from_suzieq_{utils.file_timestamp()}.json",
+                )
         else:
             print(response)
             exit(
@@ -168,16 +172,20 @@ def main():
     topology_data = generate_topology(payload)
 
     # Render the Jinja2 template
-    clab_topology = utils.render_in_one("lldp_topology_template.j2", topology_data, search_dir="templates")
+    clab_topology = utils.render_in_one(
+        "lldp_topology_template.j2", topology_data, search_dir="templates"
+    )
 
     # Check to make sure the topology has data (nodes and links)
-    if topology_data['nodes'] and topology_data['links']:
+    if topology_data["nodes"] and topology_data["links"]:
 
         # Save the YAML topology to a file if we have node and link data
         filename = f"{topology_data['name'].lower()}.clab.yml"
 
         # Create output directory and set the full path
-        topology_fp = utils.create_output_dir_fp(os.getcwd(), arguments.output_dir, filename)
+        topology_fp = utils.create_output_dir_fp(
+            os.getcwd(), arguments.output_dir, filename
+        )
 
         with open(topology_fp, "w") as f:
             f.write(clab_topology)
@@ -186,7 +194,9 @@ def main():
             f"\nContainerlab Topology file saved to {filename} in output directory:\n\t{topology_fp}\n"
         )
     else:
-        print("\nToplogy has no node or link data. Please review the topology links. Management0 interfaces are dropped")
+        print(
+            "\nToplogy has no node or link data. Please review the topology links. Management0 interfaces are dropped"
+        )
         print(topology_data)
         # Exit script. No sense in generating Mermaid content if the -g option was selected
         exit("Aborting Run\n")
@@ -194,7 +204,9 @@ def main():
     # Optional action to generate a Mermaid Graph of the topology
     if arguments.graph:
 
-        print("\nGenerating Mermaid Diagram! Your default browser should launch into the Mermaid Live Editor.")
+        print(
+            "\nGenerating Mermaid Diagram! Your default browser should launch into the Mermaid Live Editor."
+        )
         print("Tip: If the diagram does not appear, click the FULL SCREEN button.\n")
 
         # Generate Mermaid text from the updated YAML
@@ -202,7 +214,9 @@ def main():
 
         # Generate the mermaid payload and open in local browser
         mermaid_url = view_mermaid_diagram(mermaid_code)
-        print("\nCopy this URL into your browser if your browser does not launch automatically.\n")
+        print(
+            "\nCopy this URL into your browser if your browser does not launch automatically.\n"
+        )
         print(mermaid_url)
         print()
 

@@ -30,17 +30,17 @@ def main():
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
     # Load the templates
-    base_template = env.get_template('base_switch_config_block_extends.j2')
-    user_interface_template = env.get_template('user_interface_config_extends.j2')
-    tacacs_server_template = env.get_template('tacacs_server_config_extends.j2')
+    base_template = env.get_template("base_switch_config_block_extends.j2")
+    user_interface_template = env.get_template("user_interface_config_extends.j2")
+    tacacs_server_template = env.get_template("tacacs_server_config_extends.j2")
 
     # Sample data
     switch_data = {
-        'hostname': 'SW-ACCESS-01',
-        'user_vlan': 100,
-        'user_interface': 'GigabitEthernet1/0/1',
-        'tacacs_server_ip': '192.168.1.100',
-        'tacacs_key': 'SecretKey123'
+        "hostname": "SW-ACCESS-01",
+        "user_vlan": 100,
+        "user_interface": "GigabitEthernet1/0/1",
+        "tacacs_server_ip": "192.168.1.100",
+        "tacacs_key": "SecretKey123",
     }
 
     # Render the templates
@@ -63,10 +63,10 @@ def main():
     pathlib.Path(cfg_directory).mkdir(exist_ok=True)
 
     # Save the configuration to a file
-    complete_filename = 'mod_extend_combined_config.txt'
+    complete_filename = "mod_extend_combined_config.txt"
     fp = os.path.join(cfg_directory, complete_filename)
 
-    with open(fp, 'a') as f:
+    with open(fp, "a") as f:
         f.write(base_config)
         f.write(user_interface_config)
         f.write(tacacs_server_config)
@@ -77,9 +77,10 @@ def main():
 
 
 # Standard call to the main() function.
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Script Description",
-                                     epilog="Usage: ' python modular_sw_cfg.py' ")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script Description", epilog="Usage: ' python modular_sw_cfg.py' "
+    )
 
     # parser.add_argument('all', help='Execute all exercises in week 4 assignment')
     parser.add_argument(

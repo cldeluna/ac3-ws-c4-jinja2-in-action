@@ -97,7 +97,9 @@ def main():
         f.write(config_sections["interfaces"])
         f.write(config_sections["ospf"])
 
-    print(f"\nSaved configuration to file {file_name} in a new {output_dir} directory.\n")
+    print(
+        f"\nSaved configuration to file {file_name} in a new {output_dir} directory.\n"
+    )
 
 
 # Standard call to the main() function.

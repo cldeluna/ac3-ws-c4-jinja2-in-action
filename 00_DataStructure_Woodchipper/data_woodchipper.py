@@ -258,9 +258,14 @@ def FileLoadPage():
         if isinstance(file_content, pd.DataFrame):
             solara.DataFrame(file_content)
         elif isinstance(file_content, (dict, list)):
-            solara.Markdown("```json\n" + json.dumps(file_content, indent=2) + "\n```", style="max-height: 200px; overflow-y: auto;")
+            solara.Markdown(
+                "```json\n" + json.dumps(file_content, indent=2) + "\n```",
+                style="max-height: 200px; overflow-y: auto;",
+            )
         else:
-            solara.Markdown(str(file_content), style="max-height: 200px; overflow-y: auto;")
+            solara.Markdown(
+                str(file_content), style="max-height: 200px; overflow-y: auto;"
+            )
 
         if set_file_content:
             data.set(file_content)
@@ -344,14 +349,18 @@ def Page():
                             f"Variable **{variable_name}** is of type 'List'<br>"
                         )
                         # solara.Text(str(loaded_data))
-                        solara.Markdown(markdown_text, style="max-height: 200px; overflow-y: auto;")
+                        solara.Markdown(
+                            markdown_text, style="max-height: 200px; overflow-y: auto;"
+                        )
 
                     if type(loaded_data) == dict:
                         solara.Markdown(
                             f"Variable **{variable_name}** is of type 'Dict'<br>"
                         )
                         # solara.Text(str(loaded_data))
-                        solara.Markdown(markdown_text, style="max-height: 200px; overflow-y: auto;")
+                        solara.Markdown(
+                            markdown_text, style="max-height: 200px; overflow-y: auto;"
+                        )
 
                     if isinstance(loaded_data, pd.DataFrame):
                         solara.Markdown(

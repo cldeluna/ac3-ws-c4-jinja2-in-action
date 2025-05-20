@@ -23,26 +23,32 @@ def check_python_version():
     print(f"   {sys.version}")
     print()
 
+
 def check_virtualenv():
     print("✅ Virtual environment is currently set to:")
     print(f"   {sys.prefix}")
     print()
 
+
 def check_jinja2():
     try:
         import jinja2
+
         print("✅ 'jinja2' module is available.")
         print(f"   Version: {jinja2.__version__}")
     except ImportError:
         print("❌ 'jinja2' is not installed in the current environment.")
         suggest_fix()
 
+
 def suggest_fix(package_name):
     print()
     print(f"💡 Suggested fix for missing '{package_name}':")
     print("   From the top-level repository directory, run:")
     print("     uv pip install -e .")
-    print(f"   Make sure your pyproject.toml includes '{package_name}' under [project.dependencies]")
+    print(
+        f"   Make sure your pyproject.toml includes '{package_name}' under [project.dependencies]"
+    )
 
 
 def suggest_fix_utils():
@@ -52,11 +58,13 @@ def suggest_fix_utils():
     print("   - If you're using editable installs, run:")
     print("       uv pip install -e .")
 
+
 def test_utils_import():
     print("\n🔧 Testing import from local 'utils' package...")
 
     try:
         import utils.utils  # Change to `import utils` if logic is in __init__.py
+
         print("✅ Successfully imported 'utils.utils'")
     except ModuleNotFoundError as e:
         print("❌ Failed to import 'utils.utils'")
@@ -72,7 +80,8 @@ def check_ansible():
     print("\n🛠️ Checking for Ansible...")
     try:
         import ansible
-        version = getattr(ansible, '__version__', 'unknown')
+
+        version = getattr(ansible, "__version__", "unknown")
         print(f"✅ 'ansible' module is available. Version: {version}")
     except ImportError:
         print("❌ 'ansible' is not installed in the current environment.")
@@ -85,6 +94,7 @@ def check_diagrams_and_graphviz():
     # Check Python package: diagrams
     try:
         import diagrams
+
         print("✅ 'diagrams' module is available.")
     except ImportError:
         print("❌ 'diagrams' is not installed.")
@@ -93,6 +103,7 @@ def check_diagrams_and_graphviz():
     # Check Python package: graphviz
     try:
         import graphviz
+
         print("✅ 'graphviz' module is available.")
     except ImportError:
         print("❌ 'graphviz' is not installed.")
@@ -103,7 +114,9 @@ def check_diagrams_and_graphviz():
     if dot_path:
         print(f"✅ 'dot' command (Graphviz binary) found at: {dot_path}")
     else:
-        print("⚠️  'dot' system binary not found in PATH. Rendering with 'diagrams' may fail.")
+        print(
+            "⚠️  'dot' system binary not found in PATH. Rendering with 'diagrams' may fail."
+        )
         print("   ➤ Visit https://graphviz.org/download/ to install it.")
 
 
@@ -112,6 +125,7 @@ def check_requests_and_people_in_space():
 
     try:
         import requests
+
         print("✅ 'requests' module is available.")
         url = "http://api.open-notify.org/astros.json"
         response = requests.get(url, timeout=5)
@@ -120,7 +134,9 @@ def check_requests_and_people_in_space():
             num_people = data.get("number", "unknown")
             print(f"🚀 There are currently {num_people} people in space.")
         else:
-            print(f"⚠️  Unable to fetch astronaut data. Status code: {response.status_code}")
+            print(
+                f"⚠️  Unable to fetch astronaut data. Status code: {response.status_code}"
+            )
     except ImportError:
         print("❌ 'requests' is not installed.")
         suggest_fix("requests")
@@ -140,8 +156,9 @@ def main():
 
 
 # Standard call to the main() function.
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Script Description",
-                                     epilog="Usage: ' uv run check_repo_env.py' ")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script Description", epilog="Usage: ' uv run check_repo_env.py' "
+    )
     arguments = parser.parse_args()
     main()

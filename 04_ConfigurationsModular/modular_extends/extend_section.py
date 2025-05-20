@@ -82,10 +82,17 @@ def main():
 
 
 # Standard call to the main() function.
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Script Description",
-                                     epilog="Usage: ' python extend_section.py' ")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script Description", epilog="Usage: ' python extend_section.py' "
+    )
 
-    parser.add_argument('-s', '--section', help='Specify section (aaa, interfaces, ospf, base)', action='store',default="base")
+    parser.add_argument(
+        "-s",
+        "--section",
+        help="Specify section (aaa, interfaces, ospf, base)",
+        action="store",
+        default="base",
+    )
     arguments = parser.parse_args()
     main()

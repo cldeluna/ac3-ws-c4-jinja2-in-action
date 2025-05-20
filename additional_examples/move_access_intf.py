@@ -29,14 +29,15 @@ def main():
     template_obj = env_obj.get_template("move_intf.j2")
 
     # Template Payload
-    cfg_dict = { "GigabitEthernet1/0/27": 300,}
+    cfg_dict = {
+        "GigabitEthernet1/0/27": 300,
+    }
 
     # Step 3 - Render the template with specific payload
     # The template is expecting a dictionary named "cfg"
 
     rendered = template_obj.render(cfg=cfg_dict, desc="Digital Signage")
     print(rendered)
-
 
 
 # Standard call to the main() function.

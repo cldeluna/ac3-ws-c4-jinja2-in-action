@@ -26,15 +26,15 @@ def main():
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
     # Load the main template
-    main_template = env.get_template('main_switch_config_include.j2')
+    main_template = env.get_template("main_switch_config_include.j2")
 
     # Sample data
     switch_data = {
-        'hostname': 'SW-ACCESS-01',
-        'user_vlan': 100,
-        'user_interface': 'GigabitEthernet1/0/1',
-        'tacacs_server_ip': '192.168.1.100',
-        'tacacs_key': 'SecretKey123'
+        "hostname": "SW-ACCESS-01",
+        "user_vlan": 100,
+        "user_interface": "GigabitEthernet1/0/1",
+        "tacacs_server_ip": "192.168.1.100",
+        "tacacs_key": "SecretKey123",
     }
 
     # Render the main template
@@ -53,7 +53,7 @@ def main():
     # Save the configuration to a file
     filename = "combined_switch_config_include.txt"
     fp = os.path.join(cfg_directory, filename)
-    with open(fp, 'w') as f:
+    with open(fp, "w") as f:
         f.write(combined_config)
 
     print("\nCombined configuration has been saved as:")
@@ -62,13 +62,14 @@ def main():
 
 
 # Standard call to the main() function.
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Script Description",
-                                     epilog="Usage: ' python modular_sw_cfg_include.py' ")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script Description",
+        epilog="Usage: ' python modular_sw_cfg_include.py' ",
+    )
 
     # parser.add_argument('all', help='Execute all exercises in week 4 assignment')
     # parser.add_argument('-a', '--all', help='Execute all exercises in week 4 assignment', action='store_true',default=False)
     arguments = parser.parse_args()
-
 
     main()

@@ -112,13 +112,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Script Description",
         epilog="Usage: ' python gen_procedure_starter_starter.py <payload yaml>' Example payload yaml: 'Installation_details_S2000.yml'.  "
-               "To use another payload file use the -p option.",
+        "To use another payload file use the -p option.",
     )
 
     # parser.add_argument('all', help='Execute all exercises in week 4 assignment')
     parser.add_argument(
         "payload_file",
-        help="YAML Payload file to use. Default: Installation_details_S2000.yml"
+        help="YAML Payload file to use. Default: Installation_details_S2000.yml",
     )
 
     arguments = parser.parse_args()
