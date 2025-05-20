@@ -19,4 +19,5 @@ dependencies = [
     "pytz>=2025.2",
     "ansible",
     "black",
+    "monkeytype>=23.3.0",
 ]
