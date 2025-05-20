@@ -1,4 +1,27 @@
 ---
+- name: Create 'configs' subdirectory in the playbook execution directory (cross-platform)
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  vars:
+    configs_path: "{{ playbook_dir }}/../configs"
+  tasks:
+    - name: Show the configs path
+      debug:
+        msg: "The configs directory path is: {{ configs_path }}"
+    - name: Create 'configs' directory on Windows
+      win_file:
+        path: "{{ configs_path | replace('/', '\\') }}"
+        state: directory
+      when: ansible_os_family == 'Windows'
+
+    - name: Create 'configs' directory on macOS/Linux
+      file:
+        path: "{{ configs_path }}"
+        state: directory
+        mode: '0755'
+      when: ansible_os_family != 'Windows'
+
 - name: Generate switch configurations
   hosts: all
   connection: local
