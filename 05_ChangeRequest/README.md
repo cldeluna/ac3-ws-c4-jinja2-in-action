@@ -6,7 +6,7 @@ change request on a Developer instance of Service Now.
 By default the `gen_new_vlan_cr.py` script will load the data in the file `payload.csv` and using the template `new_vlan_cr_template.j2` (can you guess where it is?) will craft the text of a change request.
 
 ```python
-% python gen_new_vlan_cr.py -h
+% uv run gen_new_vlan_cr.py -h
 usage: gen_new_vlan_cr.py [-h] [-f PAYLOAD_FILE] [-c] [-s SNOW_PDI] [-u USERNAME] [-p PASSWORD]
 
 Script Description
@@ -23,19 +23,19 @@ options:
   -p PASSWORD, --password PASSWORD
                         Service Now (SNOW) Personal Developer Instance password. Default: empty string ()
 
-Usage: ' python gen_new_vlan_cr.py'
+Usage: ' python gen_new_vlan_cr.py' or 'uv run gen_new_vlan_cr.py'
 
 ```
 
 Executing the script with all the default values (and no Service Now CR creation):
 
 ```python
-% python gen_new_vlan_cr.py   
+% uv run gen_new_vlan_cr.py   
 Saved resulting CR file in current directory to LAX_Campus_NewVlan300_SNOW_STDCR.txt
 
 ```
 
-SNOW credentials can be obtained from Claudia, Lucas, or Mike!
+SNOW credentials can be obtained from Claudia, Lucas, or Josh!
 
 Output TXT file:
 
