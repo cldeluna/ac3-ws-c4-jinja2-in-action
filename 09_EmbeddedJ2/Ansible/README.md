@@ -35,6 +35,14 @@ Here you will need to focus on the template (probably) and the payload to send t
 
 ### Run the Playbook from the top level directory
 
+
+
+```bash
+uv run ansible-playbook -i inventory/hosts playbooks/generate-configs.yml
+```
+
+Or
+
 ```bash
 ansible-playbook -i inventory/hosts playbooks/generate-configs.yml
 ```

@@ -37,7 +37,7 @@ To run the app locally enter the following command via CLI from the 06_Verificat
 uv run streamlit run stp_verification_app.py
 ```
 
-Or
+Or (if you are activting the virtual environment manually)
 
 ```bash
 % streamlit run stp_verification_app.py 
