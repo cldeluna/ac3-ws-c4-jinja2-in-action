@@ -5,24 +5,34 @@
 This mini project introduces some common strategies in templating.
 
 - YAML Payload file 
-  - Yes, you saw a local JSON payload in the Current State Report but this was extracted from a system.  Here we show a YAML file of "installation details".  We use YAML because it allows for comments.
+  - Yes, you saw a local JSON payload in the Current State Report but this was extracted from a system.  Here we show a YAML file of "installation details".  We use YAML because it allows for comments.  In this case these installation details were manually entered.
   - In subsequent projects in this repository we will be extracting our "details" via API but sometimes that is not possible and a local YAML or JSON is a handy way to store these details and keep them under revision control!
   - We will use SuzieQs External Database (EXTDB) functionality to store these type of design details.  This is "off label" use of SuzieQ.  Products like OpsMill's InfraHub are targeting this gap in automation tools.
+- A local utilities module
+  - This script introduces a local utilities module located in the `utils` directory.  If you noticed, in our 01_CurrentStateReport mini project the script had several functions called by main() within the script itself.  <img src="images/functions_in_script_2025-05-20_18-15-41.jpg" alt="functions_in_script_2025-05-20_18-15-41" style="zoom:67%;" />
+  - Functions such as these will likely be handy in other scripts and so rather than violate DRY, we will now put them in a local utility moudule within the repository so these handy code snippets can be used by other scripts and maintain and updated in one place.
+  
 - Installation artefacts
   - In addition to the YAML file we have installation pictures based on the appliance models being deployed.  The YAML file indiciates which picture is to be used in the template.
   - Take a look at the YAML files so you can understand the structure and content
 
-Please open the `gen_procedure_starter.py` script in your favorite editor and lets get to work!
-
 ```python
-% python gen_procedure_starter.py 
-YAML File Contents
-{'mgmt_subnet': '', 'model': ''}
+% uv run gen_procedure.py -h
+usage: gen_procedure.py [-h] [-o OUTPUT_DIR] payload_file
 
+Script Description
 
-Saved installation Markdown file to 
+positional arguments:
+  payload_file          YAML Payload file to use. Default: Installation_details_S2000.yml
+
+options:
+  -h, --help            show this help message and exit
+  -o OUTPUT_DIR, --output_dir OUTPUT_DIR
+                        output directory Markdown procedure files. Default is output.
+
+Usage: ' python or uv run gen_procedure_starter_starter.py <payload yaml>' Example payload yaml: 'Installation_details_S2000.yml'.
+
 ```
-
 
 
 
