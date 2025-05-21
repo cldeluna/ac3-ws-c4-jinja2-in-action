@@ -1,7 +1,0 @@
-{#- user_interface_config_include.j2 -#}
-interface {{ user_interface }}
- description User Access Port
- switchport mode access
- switchport access vlan {{ user_vlan }}
- spanning-tree portfast
- spanning-tree bpduguard enable
