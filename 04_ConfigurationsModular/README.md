@@ -3,7 +3,7 @@
 These mini-projects have a number of examples to showcase the different strategies.
 
 - Monolithic
-- Modular <-- We are HERE
+- **Modular** <-- We are HERE
   - Using Jinja2 Inheritance
   - Using Jinja2 Includes
 
@@ -27,6 +27,8 @@ You can break out your configurations as you like including
 
 Each one can now be updated individually without having to modify the one big template, for the most part.
 
+Because each "feature" has its own template its is easy to generate individual feature updates.
+
 Jinja has two approaches to support this "modularity":
 
 1. Inheritance (extends)
@@ -36,49 +38,36 @@ Jinja has two approaches to support this "modularity":
 
 With inheritance you define a base template with {% block <name> %} and child templates.
 
-base_switch_config.j2 (base)
-
-- ​	user_interface_config.j2 (child template extends "base_switch_config.j2")
-- ​	tacacs_server_config.j2 (child template extends "base_switch_config.j2")
-
-The price for that is you need one (or more) overarching templates to put it all together.
+### Simple Example
 
 ```python
-{# base_switch_config_block_extends.j2 #}
-hostname {{ hostname }}
+% tree extends_example 
+extends_example
+├── base_device.j2
+├── core_switch.j2
+└── generate.py
 
-vlan {{ user_vlan }}
- name USER_VLAN
-
-{% block user_interface %}
-{# This block will be overridden by child templates #}
-{% endblock %}
-
-{% block tacacs_config %}
-{# This block will be overridden by child templates #}
-{% endblock %}
+1 directory, 3 files
 
 ```
 
+![simple_extends_block_2025-05-21_05-40-19](images/simple_extends_block_2025-05-21_05-40-19.jpg)
 
+### A more complex example
 
-Example child template which extends base (above).
+**modular_extends_config_generator.p**y
 
-```python
-{# user_interface_config_extends.j2 #}
-{% extends "base_switch_config_block_extends.j2" %}
+This script uses the follow templates:
 
-{% block user_interface %}
-interface {{ user_interface }}
- description User Access Port
- switchport mode access
- switchport access vlan {{ user_vlan }}
- spanning-tree portfast
- spanning-tree bpduguard enable
-{% endblock %}
+``` % tree templates    
+templates
+├── mod_inherit_aaa.j2
+├── mod_inherit_base.j2
+├── mod_inherit_interfaces.j2
+├── mod_inherit_ospf.j2
 ```
 
-
+Notice it is more work to "put it all together" using the extends block strategy.
 
 ## Modular - Include Model
 
