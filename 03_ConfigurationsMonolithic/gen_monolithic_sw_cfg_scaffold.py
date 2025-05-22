@@ -36,6 +36,8 @@ def main():
     print(f"\nGenerating configurations from {arguments.payload_file}\n")
 
     # TODO: Convert list of rows to list of dictionaries using a utility function
+    # You have read in a CSV file with the first row as the header and then one ore more lines of new switches
+    # Its much better to work with a list of dictionaries
 
     # TODO: Loop through the list of switch configs adding additional key/value pairs to the dictionary
     #
