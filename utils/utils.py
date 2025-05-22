@@ -575,6 +575,25 @@ def get_os_env(var_name: str) -> str:
         return ""
 
 
+def load_env():
+    # 1. Try to load local .env (in current working directory)
+    local_env = Path.cwd() / ".env"
+    if local_env.exists():
+        load_dotenv(dotenv_path=local_env)
+        print(f"Loaded .env from {local_env}")
+        return
+
+    # 2. Fallback to repo-level .env (two levels up from this file)
+    repo_env = Path(__file__).resolve().parents[1] / ".env"
+    if repo_env.exists():
+        load_dotenv(dotenv_path=repo_env)
+        print(f"Loaded .env from {repo_env}")
+        return
+
+    print("No .env file found.")
+
+
+
 def try_sq_rest_call(uri_path: str, url_options: str, debug: Any = False) -> Any:
     """
     REUSABLE BASE SuzieQ API REST Call
@@ -585,8 +604,10 @@ def try_sq_rest_call(uri_path: str, url_options: str, debug: Any = False) -> Any
     """
 
     # Load Environment variables from .env containing Suzieq REST API Token
-    dotenv.load_dotenv()
+    # dotenv.load_dotenv()
+    load_env()
 
+    # API_ACCESS_TOKEN = os.getenv("SQ_API_TOKEN")
     API_ACCESS_TOKEN = os.getenv("SQ_API_TOKEN")
     API_ENDPOINT = "ac3-suzieq.cloudmylab.net"
 
