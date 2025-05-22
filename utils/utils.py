@@ -350,7 +350,7 @@ def render_in_one(
     template_file_name: str,
     payload_dict: dict,
     search_dir: Any = "templates",
-    line_comment: Any = "!",
+    line_comment: Any = "",
 ) -> Any:
     """
     Inspired by:
@@ -373,7 +373,7 @@ def render_in_one(
 
     jtemplate = load_jtemplate(jenv, template_file_name=template_file_name)
 
-    # The templates must use a variable called "payload_dict"
+    # The templates must use a variable "cfg"
     return jtemplate.render(cfg=payload_dict)
 
 

@@ -47,7 +47,9 @@ def main():
         pytz.timezone(arguments.timezone)
     )  # Replace with your timezone
 
-    # Format it as a string
+    location = str(now.tzinfo).split("/")[1]
+
+    # Format it as a human-readable string
     timestamp = now.strftime("%B %d, %Y at %I:%M:%S %p %Z")
 
     # Date stamp for Report if one already exists
@@ -66,6 +68,9 @@ def main():
 
         # cfg_dict will be passed to the template as "cfg"
         for cfg_dict in payload_lod:
+
+            # Add location
+            cfg_dict.update({"location": location})
 
             # Build template payload
             cfg_dict.update({"timestamp": timestamp})
@@ -103,7 +108,7 @@ def main():
             )
 
             rendered = utils.render_in_one(
-                "dnac_baseconfig_sample_template.j2", cfg_dict
+                "dnac_baseconfig_sample_template.j2", cfg_dict, line_comment="##"
             )
 
             print(f"\tGenerating configuration for {filename}")
