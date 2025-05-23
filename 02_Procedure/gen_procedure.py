@@ -40,10 +40,12 @@ from utils import utils
 
 def main():
 
+    # ------------------------------------------ PAYLOAD SETUP -------------------------------------------------
     # Date stamp for Report if one already exists
     file_timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 
     # Format as human-readable string
+    human_readabl = "This is NOT a Human Readable Timestamp!!"
     human_readable = datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p")
 
     # ----------------------------------------------------------------------------------------------------------
@@ -63,13 +65,12 @@ def main():
     else:
         img = os.path.join(".", "images", "istockphoto-519363862-612x612.jpeg")
 
+    #  ----------------------------------- ADDING DATA TO PAYLOAD DICT  ----------------------------------------
     # Here we are adding the appropriate diagram image to the payload dictionary
     payload_dict.update({"diagram": img})
 
     # Update the payload dictionary we will send to the template with the human readable timestamp
-    payload_dict.update({"dattim": human_readable})
-
-    # TODO: Calculate configuration parameters from subnet
+    payload_dict.update({"dattim": human_readabl})
 
     # Get Gateway
     payload_dict.update({"mgmt_gw": utils.get_first_ip(payload_dict["mgmt_subnet"])})
@@ -93,7 +94,7 @@ def main():
 
     # LOAD TEMPLATE
     template_obj = utils.load_jtemplate(
-        env_obj, template_file_name="installation_procedure_md_template.j2"
+        env_obj, template_file_name="installation_procedure_md_templat.j2"
     )
     rendered = template_obj.render(cfg=payload_dict)
 
