@@ -1,5 +1,5 @@
 #!/usr/bin/python -tt
-# Project: ac2_templating_workshop
+# Project: ac3_templating_workshop
 # Filename: data_woodchipper
 # claudiadeluna
 # PyCharm

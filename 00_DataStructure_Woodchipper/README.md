@@ -1,15 +1,13 @@
 # Data Structure Woodchipper
 
-The goal of this mini project is to look at different data structures and how they can be 
-- passed into a template, and
-- decomposed 
+The goal of this mini project is to look at different data structures and how they can be: 
+- passed into a Jinja2 template, and
+- decomposed (reference the values in the data structure)
 
-within a Jinja2 Template.
-
-The solara module is used to present the information via a web interface which can be run locally 
+The Solara module is used to present the information via a web interface which can be run locally 
 on the student's laptop.
 
-In the examples, by default, all payload is loaded into a variable named `loaded_data` which can be changed.
+In the examples, by default, all payload is loaded into a variable named `loaded_data` which can be changed outside of the template.
 This variable in the python script can be a: 
 
 - a string 
@@ -44,4 +42,3 @@ The bottom part of the center pane will show the rendered template.
 - jinja2
 - solara
 - pandas
-- solara
