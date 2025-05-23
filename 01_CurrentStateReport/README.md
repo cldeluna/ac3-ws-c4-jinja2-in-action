@@ -4,7 +4,7 @@
 
 This project will start to familiarize you with the overall repository environment as well as some lessons learned.
 
-Please open the `gen_bgp_report.py` script in your favorite editor and lets get to work!
+Please open the `gen_bgp_report.py` script in your favorite editor and lets take a look!
 
 ```python
 % uv run gen_bgp_report.py -h
@@ -20,7 +20,7 @@ options:
   -l LOCATION, --location LOCATION
                         Location Default: GDL Campus
 
-Usage: ' python gen_bgp_report.py' or python gen_bgp_report.py -l 'AMS Campus'
+Usage: ' uv run gen_bgp_report.py or python gen_bgp_report.py '
 
 
 ```

@@ -1,5 +1,5 @@
 #!/usr/bin/python -tt
-# Project: ac2_templating_workshop
+# Project: ac3_templating_workshop
 # Filename: gen_bgp_report
 # claudiadeluna
 # PyCharm
@@ -258,7 +258,7 @@ def main() -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Script Description",
-        epilog="Usage: ' python gen_bgp_report.py' or python gen_bgp_report.py -l 'AMS Campus'",
+        epilog="Usage: ' uv run gen_bgp_report.py or python gen_bgp_report.py",
     )
 
     parser.add_argument(
