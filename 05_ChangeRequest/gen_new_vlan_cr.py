@@ -1,5 +1,5 @@
 #!/usr/bin/python -tt
-# Project: ac2_templating_workshop
+# Project: ac3_templating_workshop
 # Filename: gen_new_vlan_cr.py
 # claudiadeluna
 # PyCharm
@@ -151,7 +151,7 @@ def main():
         # Craft CR short description
 
         short_desccription = (
-            f"AC2 {utils.get_username()} "
+            f"AC3 {utils.get_username()} "
             f"Vlan Work Set new Vlan {details_dict['new_vlan']} "
             f"for subnet {details_dict['subnet_cidr']} on {details_dict['gateway_device']} "
         )
