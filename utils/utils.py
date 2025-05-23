@@ -410,6 +410,32 @@ def get_fourth_ip(cidr: Any) -> Any:
     return str(fourth_ip) if fourth_ip else None
 
 
+# TODO: Write generic offset function
+def get_nth_ip(cidr_subnet: str, offset: int) -> Union[ipaddress.IPv4Address, str]:
+    """
+    Returns the nth usable IP address from a given CIDR subnet.
+
+    Parameters:
+        cidr_subnet (str): The subnet in CIDR notation (e.g., "192.168.1.0/24").
+        offset (int): The 1-based index of the usable IP address to retrieve.
+
+    Returns:
+        Union[ipaddress.IPv4Address, str]: The nth IP address or an error message.
+    """
+    try:
+        network = ipaddress.ip_network(cidr_subnet, strict=False)
+        all_ips = list(network.hosts())
+
+        if offset < 1 or offset > len(all_ips):
+            return f"Offset {offset} is out of range. Valid range: 1 to {len(all_ips)}"
+
+        return all_ips[offset - 1]
+
+    except ValueError as e:
+        print(f"Invalid CIDR notation: {e}")
+        return ""
+    
+
 def add_business_days(start_date: Any, business_days: Any) -> Any:
     """
     This helper function takes a start date and the number of business days to add. It iterates through the calendar,
