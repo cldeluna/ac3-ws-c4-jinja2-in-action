@@ -605,14 +605,14 @@ def load_env():
     # 1. Try to load local .env (in current working directory)
     local_env = Path.cwd() / ".env"
     if local_env.exists():
-        load_dotenv(dotenv_path=local_env)
+        dotenv.load_dotenv(dotenv_path=local_env)
         print(f"Loaded .env from {local_env}")
         return
 
     # 2. Fallback to repo-level .env (two levels up from this file)
     repo_env = Path(__file__).resolve().parents[1] / ".env"
     if repo_env.exists():
-        load_dotenv(dotenv_path=repo_env)
+        dotenv.load_dotenv(dotenv_path=repo_env)
         print(f"Loaded .env from {repo_env}")
         return
 
@@ -633,11 +633,10 @@ def try_sq_rest_call(uri_path: str, url_options: str, debug: Any = False) -> Any
     # dotenv.load_dotenv()
     load_env()
 
-    # API_ACCESS_TOKEN = os.getenv("SQ_API_TOKEN")
     API_ACCESS_TOKEN = os.getenv("SQ_API_TOKEN")
     API_ENDPOINT = "ac3-suzieq.cloudmylab.net"
 
-    url = f"https://{API_ENDPOINT}:8443{uri_path}?{url_options}"
+    url = f"http://{API_ENDPOINT}:8443{uri_path}?{url_options}"
 
     payload = "\r\n"
     headers = {
