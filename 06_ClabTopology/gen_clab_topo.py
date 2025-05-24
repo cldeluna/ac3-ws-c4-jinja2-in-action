@@ -145,7 +145,7 @@ def main():
 
     if arguments.local:
         local_filename = "topology_response_from_suzieq.json"
-        print(f"\nUsing JSON payload in local file {local_filename}")
+        print(f"\nUsing local file of SuzieQ BGP output payload: {local_filename}")
         payload = utils.load_json(local_filename)
     else:
         # Get topology for the provided namespace from SuzieQ REST
@@ -166,8 +166,8 @@ def main():
         except Exception as e:
             exit(
                 f"\n\nAborting Run! Cannot access SuzieQ API! Status Code: "
-                f"\nPlease make sure you have an .env file at the top level of your repository and a valdi token in "
-                f"the environment variable SQ_API_TOKEN. \nRename .env_sample to .env\n\n"
+                f"\nPlease make sure you have an .env file at the top level of your repository and a valid SuzieQ token in "
+                f"the environment variable SQ_API_TOKEN. \n"
             )
 
         payload = response.json()
@@ -184,7 +184,7 @@ def main():
     if topology_data["nodes"] and topology_data["links"]:
 
         # Save the YAML topology to a file if we have node and link data
-        filename = f"{topology_data['name'].lower()}.clab.yml"
+        filename = f"{topology_data['name'].lower()}_digital.clab.yml"
 
         # Create output directory and set the full path
         topology_fp = utils.create_output_dir_fp(
