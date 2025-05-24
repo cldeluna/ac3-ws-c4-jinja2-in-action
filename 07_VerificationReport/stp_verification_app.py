@@ -19,17 +19,6 @@ import pandas as pd
 import datetime
 import streamlit as st
 
-
-# # This is necessary because I want to import functions in a file called utils.py and that file is one level up
-# # from here
-# # Get the absolute path of the top level main repository
-# parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# # Append the parent directory to sys.path so python searches that directory for the utils file
-# sys.path.append(parent_dir)
-# # Import the utils module (python script) one level up
-# import utils
-
-
 from utils import utils
 
 
@@ -141,7 +130,7 @@ def main():
             selected_switches = st.multiselect(
                 "Select Switches",
                 available_switches,
-                help="Choose the switches where you want to configure the VLAN",
+                help="Choose the switches where you want to verify VLAN configuration",
                 key="device_list",
             )
 
@@ -151,7 +140,7 @@ def main():
             min_value=1,
             max_value=4094,
             # value=1,
-            help="Enter a VLAN ID between 2 and 4094",
+            help="Enter a VLAN ID between 2 and 4094 to Verify",
             key="vlan_id",
         )
 
@@ -199,7 +188,7 @@ def main():
                         st.write(f"Vlan {vlan_id} NOT on Switch {sw}")
                         vlan_configured_bool = False
                         sw_missing_vlan_list.append(sw)
-                    # Saving the response so we hae a local copy of the data, just in case
+                    # Saving the response so we have a local copy of the data, just in case
                     if vlan_resp.json():
                         utils.save_json_payload(
                             vlan_resp.json(), "vlan_response_from_suzieq.json"
@@ -252,15 +241,20 @@ def main():
             rpt_dict.update({"header_summary": header_summary})
 
             # Template stp_verification_template.j2
-            # template = "stp_verification_template.j2"
-            template = "other_template_var.j2"
+            template = "stp_verification_template.j2"
+            # template = "other_template_var.j2"
 
             # Define the filename
             filename = (
                 f"{st.session_state.namespace}_STP_Verification_{file_timestamp}.md"
             )
             # Create the full path to the new file
-            verification_rpt_fp = os.path.join(os.getcwd(), filename)
+            # verification_rpt_fp = os.path.join(os.getcwd(), filename)
+            # Create output directory and set the full path
+            output_dir = "output"
+            verification_rpt_fp = utils.create_output_dir_fp(
+                os.getcwd(), output_dir, filename
+            )
 
             rendered = utils.render_in_one(template, rpt_dict)
 
@@ -270,4 +264,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print(f"Usage: 'uv run streamlit run stp_verification_app.py'")
     main()

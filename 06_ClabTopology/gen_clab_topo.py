@@ -24,14 +24,6 @@ import argparse
 import webbrowser
 from logging import exception
 
-# # This is necessary because I want to import functions in a file called utils.py and that file is one level up
-# # from here
-# # Get the absolute path of the top level main repository
-# parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# # Append the parent directory to sys.path so python searches that directory for the utils file
-# sys.path.append(parent_dir)
-# # Import the utils module (python script) one level up
-# import utils
 
 from utils import utils
 
@@ -153,6 +145,14 @@ def main():
         print(f"\nUsing local file of SuzieQ BGP output payload: {local_filename}")
         payload = utils.load_json(local_filename)
     else:
+
+        # Lets check to see if SQ is running
+        sq_health_check = utils.get_sq_health()
+        if not sq_health_check:
+            print("Cannot connect to SuzieQ API. Please check server and connectivity.")
+            print(sq_health_check)
+            sys.exit()
+
         # Get topology for the provided namespace from SuzieQ REST
 
         try:
@@ -171,7 +171,7 @@ def main():
         except Exception as e:
             exit(
                 f"\n\nAborting Run! Cannot access SuzieQ API!"
-                f"\nPlease make sure the SuzieQ REST API is running," 
+                f"\nPlease make sure the SuzieQ REST API is running,"
                 f"\nthat you have an .env file at the top level of your repository and "
                 f"\na valid SuzieQ token in the environment variable SQ_API_TOKEN. \n"
             )

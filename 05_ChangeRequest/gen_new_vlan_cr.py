@@ -21,15 +21,6 @@ import webbrowser
 import requests
 
 
-# # This is necessary because I want to import functions in a file called utils.py and that file is one level up
-# # from here
-# # Get the absolute path of the top level main repository
-# parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# # Append the parent directory to sys.path so python searches that directory for the utils file
-# sys.path.append(parent_dir)
-# # Import the utils module (python script) one level up
-# import utils
-
 from utils import utils
 
 

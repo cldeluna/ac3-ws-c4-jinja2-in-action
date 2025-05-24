@@ -67,7 +67,6 @@ def main():
     # Load configuration payload
     cfg_data = load_cfg_data()
 
-
     # Set up the Jinja2 environment
     template_dir = "templates"
 
@@ -120,7 +119,9 @@ def main():
         pathlib.Path(cfg_directory).mkdir(exist_ok=True)
 
         # Save the configuration to a file
-        file_name = f"{cfg_data['hostname']}_router_config_using_inheritance_extends.txt"
+        file_name = (
+            f"{cfg_data['hostname']}_router_config_using_inheritance_extends.txt"
+        )
         fp = os.path.join(cfg_directory, file_name)
 
         with open(fp, "w") as f:
@@ -137,7 +138,8 @@ def main():
 # Standard call to the main() function.
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Script Description", epilog="Usage: ' uv run modular_extends_config_generator.py' "
+        description="Script Description",
+        epilog="Usage: ' uv run modular_extends_config_generator.py' ",
     )
 
     parser.add_argument(

@@ -16,7 +16,6 @@ import argparse
 import jinja2
 
 
-
 def main():
 
     # Set up the Jinja2 environment
