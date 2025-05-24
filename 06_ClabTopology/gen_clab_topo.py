@@ -170,9 +170,10 @@ def main():
                 print(f"{response.status_code} Reason: {response.reason} ")
         except Exception as e:
             exit(
-                f"\n\nAborting Run! Cannot access SuzieQ API! Status Code: "
-                f"\nPlease make sure you have an .env file at the top level of your repository and a valid SuzieQ token in "
-                f"the environment variable SQ_API_TOKEN. \n"
+                f"\n\nAborting Run! Cannot access SuzieQ API!"
+                f"\nPlease make sure the SuzieQ REST API is running," 
+                f"\nthat you have an .env file at the top level of your repository and "
+                f"\na valid SuzieQ token in the environment variable SQ_API_TOKEN. \n"
             )
 
         payload = response.json()
