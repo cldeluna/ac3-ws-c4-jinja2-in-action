@@ -19,6 +19,7 @@ import sys
 import json
 import zlib
 import base64
+import random
 import argparse
 import webbrowser
 from logging import exception
@@ -143,6 +144,10 @@ def main():
     :return:
     """
 
+    # Hate Digital Twins but can't deny there has to be a relationship
+    rel_types = ["sis", "bro", "cuz"]
+    random_rel = random.choice(rel_types)
+
     if arguments.local:
         local_filename = "topology_response_from_suzieq.json"
         print(f"\nUsing local file of SuzieQ BGP output payload: {local_filename}")
@@ -174,6 +179,7 @@ def main():
 
     # Generate the topology data using the local function generate_topology
     topology_data = generate_topology(payload)
+    topology_data.update({"name": f"{arguments.namespace}_digital_{random_rel}"})
 
     # Render the Jinja2 template
     clab_topology = utils.render_in_one(
@@ -184,7 +190,7 @@ def main():
     if topology_data["nodes"] and topology_data["links"]:
 
         # Save the YAML topology to a file if we have node and link data
-        filename = f"{topology_data['name'].lower()}_digital.clab.yml"
+        filename = f"{arguments.namespace.lower()}_digital_{random_rel}.clab.yml"
 
         # Create output directory and set the full path
         topology_fp = utils.create_output_dir_fp(
