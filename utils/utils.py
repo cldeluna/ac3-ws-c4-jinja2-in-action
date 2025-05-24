@@ -434,7 +434,7 @@ def get_nth_ip(cidr_subnet: str, offset: int) -> Union[ipaddress.IPv4Address, st
     except ValueError as e:
         print(f"Invalid CIDR notation: {e}")
         return ""
-    
+
 
 def add_business_days(start_date: Any, business_days: Any) -> Any:
     """
@@ -606,18 +606,17 @@ def load_env():
     local_env = Path.cwd() / ".env"
     if local_env.exists():
         dotenv.load_dotenv(dotenv_path=local_env)
-        print(f"Loaded .env from {local_env}")
+        # print(f"Loaded .env from local {local_env}")
         return
 
     # 2. Fallback to repo-level .env (two levels up from this file)
     repo_env = Path(__file__).resolve().parents[1] / ".env"
     if repo_env.exists():
         dotenv.load_dotenv(dotenv_path=repo_env)
-        print(f"Loaded .env from {repo_env}")
+        # print(f"Loaded .env from top level {repo_env}")
         return
 
     print("No .env file found.")
-
 
 
 def try_sq_rest_call(uri_path: str, url_options: str, debug: Any = False) -> Any:
@@ -675,7 +674,7 @@ def try_sq_rest_call(uri_path: str, url_options: str, debug: Any = False) -> Any
 
 def get_sq_health() -> Any:
     # Trick to get a unique list of namespaces for the pull down
-    URI_PATH = "/api/healte"
+    URI_PATH = "/api/health"
     URL_OPTIONS = f""
     response = try_sq_rest_call(URI_PATH, URL_OPTIONS)
 
