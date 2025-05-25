@@ -213,6 +213,7 @@ def jenv_filesystem(
     ktn: Any = False,
     lsb: Any = False,
     tb: Any = False,
+    err_on_undef: bool = False,
 ) -> Any:
     """
 
@@ -265,6 +266,9 @@ def jenv_filesystem(
     line_statement_prefix="",
 
     ! Undefined default
+
+    Use jinja2.StrictUndefined to avoid blank values
+    Default is jinja2.runtime.Undefined
     undefined=jinja2.runtime.Undefined
     -Silently evaluates to an undefined object
     -Printing it results in an empty string
@@ -309,13 +313,20 @@ def jenv_filesystem(
     if line_comment not in valid_line_comment_prefixes:
         line_comment = "##"
 
+    # Use undef=jinja2.StrictUndefined to avoid blank values
+    # Default is jinja2.runtime.Undefined
+    if err_on_undef:
+        undef = jinja2.StrictUndefined
+    else:
+        undef = jinja2.runtime.Undefined
+
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader(search_dir, encoding="utf-8"),
         line_comment_prefix=line_comment,  # Only works for single-line comments
         keep_trailing_newline=ktn,  # Default is False True preserve trailing newline in templates
         trim_blocks=tb,  # True remove first newline after a block Default is False
         lstrip_blocks=lsb,  # True remove leading spaces and tabs from block tags Default is False
-        undefined=jinja2.runtime.Undefined,  # Default is Undefined - undefined variables render as empty string
+        undefined=undef,  # Default is Undefined - undefined variables render as empty string
     )
 
     return env
