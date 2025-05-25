@@ -59,11 +59,11 @@ def main():
     # Select Image
     # This sets the image we will use in the document
     if re.search(r"600", payload_dict["model"]):
-        img = os.path.join(".", "images", "ORDR_S600_Sensor.jpg")
+        img = os.path.join("..", "images", "ORDR_S600_Sensor.jpg")
     elif re.search(r"2000", payload_dict["model"]):
-        img = os.path.join(".", "images", "ORDR_S2000_Sensor.jpg")
+        img = os.path.join("..", "images", "ORDR_S2000_Sensor.jpg")
     else:
-        img = os.path.join(".", "images", "istockphoto-519363862-612x612.jpeg")
+        img = os.path.join("..", "images", "istockphoto-519363862-612x612.jpeg")
 
     #  ----------------------------------- ADDING DATA TO PAYLOAD DICT  ----------------------------------------
     # Here we are adding the appropriate diagram image to the payload dictionary
