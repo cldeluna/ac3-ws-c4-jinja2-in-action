@@ -21,15 +21,24 @@ Rather than Little Joey answering 7 because he had an old version of the "design
 Using this feature, we will extract the latest new cabling data from the SuzieQ External DB `new_ap_cabling` and generate a detailed Statement of Work for a location.
 
 ```
+uv run gen_sow.py -l
+```
+
+```
 claudia@Claudias-MacBook-AirM415 08_SoW % uv run gen_sow.py -h
-usage: gen_sow.py [-h]
+usage: gen_sow.py [-h] [-o OUTPUT_DIR] [-l]
 
 Script Description
 
 options:
-  -h, --help  show this help message and exit
+  -h, --help            show this help message and exit
+  -o OUTPUT_DIR, --output_dir OUTPUT_DIR
+                        output directory Markdown procedure files. Default is output.
+  -l, --local           Use local data file. Default: False
 
-Usage: ' 'uv run gen_sow.py' or python gen_sow.py' Tip: Use python (rather than uv run) if you have activated your virtual environment manualy'  
+Usage: 'uv run gen_sow.py' or python gen_sow.py' Tip: Use python (rather than uv run) if you have activated your virtual
+environment manualy'
+claudia@Claudias-MacBook-AirM415 08_SoW %  
 ```
 
 
