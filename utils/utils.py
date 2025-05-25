@@ -874,6 +874,30 @@ def find_vlan_on_switch(vlanx: Any, switchx: Any) -> Any:
     return vlan_configured_on_sw, sq_api_response
 
 
+
+def find_vlan_at_site(vlanx: Any, namespacex: Any) -> Any:
+    """
+    Call to SuzieQ Vlan how for a namespace and vlan.
+
+    :param vlanx:
+    :param namespace:
+    :return: a boolean indicating true if the vlan is configured on the switch and false otherwise,
+             and the complete API response
+    """
+    vlan_configured_at_site = False
+
+    URI_PATH = "/api/v2/vlan/show"
+    URL_OPTIONS = f"namespace={namespacex}&view=latest&columns=default&vlan={vlanx}"
+
+    sq_api_response = try_sq_rest_call(URI_PATH, URL_OPTIONS, debug=False)
+    # print(sq_api_response.json())
+
+    if sq_api_response.json():
+        vlan_configured_at_site = True
+
+    return vlan_configured_at_site, sq_api_response
+
+
 def check_stp_switch(vlanx: Any, switch: Any) -> Any:
     """
     Call to SuzieQ STP show for a switch and vlan.
