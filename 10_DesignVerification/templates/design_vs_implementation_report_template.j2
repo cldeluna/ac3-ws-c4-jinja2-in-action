@@ -1,0 +1,18 @@
+# Design vs Implementation Validation Report
+
+Location: {{ cfg['location'] }} 
+
+Generated: {{ cfg['timestamp'] }}
+
+## Critical Issues
+{% if cfg['missing_vlans'] %}
+Site is out of compliance with design!
+
+The following vlans are missing:
+{% for vlan in cfg['missing_vlans'] %}
+{{  -vlan }}
+{% endfor %}
+{% else %}
+Site complies with design!
+
+{% endif %}
