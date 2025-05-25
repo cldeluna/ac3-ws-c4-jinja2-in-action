@@ -35,4 +35,5 @@ lab_resources
 *.png
 *.mp4
 *scaffold*
+*.egg-info/
 
