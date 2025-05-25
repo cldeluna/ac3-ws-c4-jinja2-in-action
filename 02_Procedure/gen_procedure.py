@@ -87,8 +87,11 @@ def main():
     # Note: in the jenv_filesystem function the default line comment is #
     #       Because # is part of the Markdown syntax we need to use something else if we
     #       are rendering Markdown otherwise our # Titles will be interpreted by Jinja as comments!
-    env_obj = utils.jenv_filesystem(line_comment="=")
+    # Note: in the jevn_filesystem function you can set the error on undefined variable
+    #       behavior using the err_on_undef optional flag.  Default is False.
+    env_obj = utils.jenv_filesystem(line_comment="=", err_on_undef=True)
     # print(env_obj.list_templates())
+    
     # ADD DEBUGGING Just In Case
     env_obj.add_extension("jinja2.ext.debug")
 
