@@ -64,11 +64,13 @@ def create_std_cr_snow(
     # Check response
     # A 201 status code is returned when a new resource is created
     if response.status_code == 201:
-        print(f"Standard Change Request created successfully: {response.status_code}")
+        print(f"\nStandard Change Request created successfully: {response.status_code}")
         # pprint.pprint(response.json())
     else:
-        print(f"Error creating Standard Change Request: {response.status_code}")
-        # print(response.text)
+        print(f"\nError creating Standard Change Request: {response.status_code}\n")
+        if "Instance Hibernating" in response.text:
+            print("ERROR! SNOW PDI Instance is Hybernating. Please wake it up!\n")
+        response = None
 
     return response
 
