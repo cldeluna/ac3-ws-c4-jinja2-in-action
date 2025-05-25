@@ -15,6 +15,7 @@ __license__ = "Python"
 import argparse
 import datetime
 import sys
+import csv
 import os
 
 # # This is necessary because I want to import functions in a file called utils.py and that file is one level up
@@ -53,7 +54,7 @@ def main():
         print(
             "ERROR! Cannot connect to SuzieQ API. Please check server and connectivity."
         )
-        exit()
+        print('Will use local copy of SuzieQ data.')
 
     # Date stamp for Report if one already exists
     file_timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -70,23 +71,41 @@ def main():
     sow.update({"location": namespace})
     sow.update({"extdb": extdb_table})
     sow.update({"timestamp": human_readable})
+    
+    # Initialize the response list of dictionaries variable
+    resp_lod = list()
+    if not sq_health_check or arguments.local:
+        # In case SuzieQ is not available, use local payload from SuzieQ
+        file_path = "gdl_new_ap_cabling.csv"
+        with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            resp_lod = [row for row in reader]
+    else:
+        # Get the cabling information from SuzieQ REST API
+        resp = utils.get_extdb(extdb_table, namespace)
+        resp_lod = resp.json()
 
-    # Get the cabling information from SuzieQ
-    resp = utils.get_extdb(extdb_table, namespace)
+        # Exit if no data from SuzieQ
+        if not resp.ok:
+            print("ERROR! No data from SuzieQ! Aborting Run")
+            print(resp_lod)
+            sys.exit()
 
-    sow.update({"data_lod": resp.json()})
+    # Update template payload
+    sow.update({"data_lod": resp_lod})
 
     # Use a set comprehension to extract unique model values
-    unique_models = {item["APModel"] for item in resp.json() if "APModel" in item}
+    unique_models = {item["APModel"] for item in resp_lod if "APModel" in item}
 
+    # Update template payload
     sow.update({"models": list(unique_models)})
 
     # AP Placement Map List
-    maps = {item["APLoationMap"] for item in resp.json() if "APLoationMap" in item}
+    maps = {item["APLoationMap"] for item in resp_lod if "APLoationMap" in item}
 
+    # Update template payload
     sow.update({"maps": list(maps)})
-
-    sow.update({"mdtable": dict_to_markdown_table(resp.json())})
+    sow.update({"mdtable": dict_to_markdown_table(resp_lod)})
 
     template_file = "ap_cabling_sow_md_template.j2"
     # template_file = "test.j2"
@@ -107,9 +126,9 @@ def main():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Script Description",
-        epilog="Usage: ' python gen_sow.py' or 'uv run gen_sow.py' ",
+        epilog="Usage: 'uv run gen_sow.py' or python gen_sow.py' Tip: Use python (rather than uv run) if you have activated your virtual environment manualy'   ",
     )
-    arguments = parser.parse_args()
+
 
     parser.add_argument(
         "-o",
@@ -119,4 +138,13 @@ if __name__ == "__main__":
         default="output",
     )
 
+    parser.add_argument(
+        "-l",
+        "--local",
+        help="Use local data file. Default: False",
+        action="store_true",
+        default=False,
+    )
+
+    arguments = parser.parse_args()
     main()
