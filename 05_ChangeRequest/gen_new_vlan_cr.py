@@ -186,6 +186,7 @@ def main():
                 )
                 # print(resp.url)
                 # print(resp.links)
+                print(f"To view your CR use credentials admin/un9hJY2^wIY!")
 
             else:
                 print("Limited response returned")
@@ -220,9 +221,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "-s",
         "--snow_pdi",
-        help="Service Now (SNOW) Personal Developer Instance. Default: 'dev224081.service-now.com'",
+        help="Service Now (SNOW) Personal Developer Instance. Default: 'dev221484.service-now.com'",
         action="store",
-        default="dev224081.service-now.com",
+        default="dev221484.service-now.com",
     )
     parser.add_argument(
         "-u",
@@ -234,9 +235,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "-p",
         "--password",
-        help="Service Now (SNOW) Personal Developer Instance password. Default: empty string",
+        help="Service Now (SNOW) Personal Developer Instance password. Default: empty string or is it?",
         action="store",
-        default="",
+        default="un9hJY2^wIY!",
     )
     parser.add_argument(
         "-o",
