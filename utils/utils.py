@@ -885,7 +885,6 @@ def find_vlan_on_switch(vlanx: Any, switchx: Any) -> Any:
     return vlan_configured_on_sw, sq_api_response
 
 
-
 def find_vlan_at_site(vlanx: Any, namespacex: Any) -> Any:
     """
     Call to SuzieQ Vlan how for a namespace and vlan.

@@ -49,8 +49,18 @@ def get_expected_vlans_ihub():
 
 def flatten_person(obj):
     result = {}
-    for attr in ['id', 'first_name', 'last_name', 'middle_name', 'email',
-                 'mobile', 'remote_worker', 'default_location', 'display_label', 'hfid']:
+    for attr in [
+        "id",
+        "first_name",
+        "last_name",
+        "middle_name",
+        "email",
+        "mobile",
+        "remote_worker",
+        "default_location",
+        "display_label",
+        "hfid",
+    ]:
         value = getattr(obj, attr, None)
 
         # If it's an InfraHub Attribute object, extract its `.value`
@@ -59,7 +69,7 @@ def flatten_person(obj):
 
         # If it's a list, preserve or stringify it
         elif isinstance(value, list):
-            result[attr] = ', '.join(map(str, value))
+            result[attr] = ", ".join(map(str, value))
 
         # Use scalar or None directly
         else:
@@ -69,8 +79,18 @@ def flatten_person(obj):
 
 def flatten_vlans(obj):
     result = {}
-    for attr in ['id', 'description', 'display_label', 'gateway', 'hfid',
-                 'name', 'role', 'site', 'satus', 'vlan_id']:
+    for attr in [
+        "id",
+        "description",
+        "display_label",
+        "gateway",
+        "hfid",
+        "name",
+        "role",
+        "site",
+        "satus",
+        "vlan_id",
+    ]:
         value = getattr(obj, attr, None)
 
         # If it's an InfraHub Attribute object, extract its `.value`
@@ -79,7 +99,7 @@ def flatten_vlans(obj):
 
         # If it's a list, preserve or stringify it
         elif isinstance(value, list):
-            result[attr] = ', '.join(map(str, value))
+            result[attr] = ", ".join(map(str, value))
 
         # Use scalar or None directly
         else:
@@ -89,19 +109,19 @@ def flatten_vlans(obj):
 
 def get_people():
 
-    IH_SERVER = 'https://demo.infrahub.app'
-    IH_API_KEY = '1842b798-22d1-28f2-d7ee-106521adfe49'
+    IH_SERVER = "https://demo.infrahub.app"
+    IH_API_KEY = "1842b798-22d1-28f2-d7ee-106521adfe49"
 
     # Initialize Config with proper parameters
     config = Config(
         address=IH_SERVER,  # e.g. "https://demo.infrahub.app"
-        api_token=IH_API_KEY  # Not needed for demo server
+        api_token=IH_API_KEY,  # Not needed for demo server
     )
 
     client = InfrahubClientSync(config=config)
 
     # Example: Query all devices (assuming 'InfraDevice' is defined in your schema)
-    #all_people = client.all("OrganizationPerson")
+    # all_people = client.all("OrganizationPerson")
     all_people = client.all("InfraVLAN")
     print(all_people)
     print(dir(all_people[0]))
@@ -116,13 +136,13 @@ def get_people():
 
 def get_vlans():
 
-    IH_SERVER = 'https://demo.infrahub.app'
-    IH_API_KEY = '1842b798-22d1-28f2-d7ee-106521adfe49'
+    IH_SERVER = "https://demo.infrahub.app"
+    IH_API_KEY = "1842b798-22d1-28f2-d7ee-106521adfe49"
 
     # Initialize Config with proper parameters
     config = Config(
         address=IH_SERVER,  # e.g. "https://demo.infrahub.app"
-        api_token=IH_API_KEY  # Not needed for demo server
+        api_token=IH_API_KEY,  # Not needed for demo server
     )
 
     client = InfrahubClientSync(config=config)
@@ -132,9 +152,9 @@ def get_vlans():
     # print(all_vlans)
     # print(dir(all_vlans[0]))
     # for vlan in all_vlans:
-        # pprint.pprint(vlan.get_raw_graphql_data())
-        # print(f"Device name: {device.last_name.value}")
-        # print()
+    # pprint.pprint(vlan.get_raw_graphql_data())
+    # print(f"Device name: {device.last_name.value}")
+    # print()
 
     vlan_dicts = [flatten_vlans(vlan) for vlan in all_vlans]
     # pprint.pprint(vlan_dicts)
@@ -153,33 +173,37 @@ def main():
 
     # Format as human-readable string
     human_readable = datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p")
-    payload_dict.update({'timestamp': human_readable})
+    payload_dict.update({"timestamp": human_readable})
 
     # Get expected vlans at site from Authoratative Desig Store InfraHub
     vlans_lod = get_vlans()
 
     # Pull out the vlans of interes for our site (ORD)
     vlan_ids = []
-    site_of_interest = 'ord'
+    site_of_interest = "ord"
     namespace_of_interest = "ORD_Campus"
 
-    payload_dict.update({'location': namespace_of_interest})
+    payload_dict.update({"location": namespace_of_interest})
 
     for item in vlans_lod:
-        site_obj = item.get('site')
+        site_obj = item.get("site")
         if site_obj:
             # Attempt to get a readable site name (adjust this based on your object)
-            site_name = getattr(site_obj, 'display_label', '')  # Or 'name', or str(site_obj)
+            site_name = getattr(
+                site_obj, "display_label", ""
+            )  # Or 'name', or str(site_obj)
             if site_of_interest in site_name.lower():
-                vlan_ids.append(item.get('vlan_id'))
+                vlan_ids.append(item.get("vlan_id"))
 
     print(f"{namespace_of_interest} should have the following vlans: {vlan_ids}")
-    payload_dict.update({'expected_vlans': vlan_ids})
+    payload_dict.update({"expected_vlans": vlan_ids})
 
     missing_vlans = list()
     for expected_vlan in vlan_ids:
         print(f"Checking for vlan {expected_vlan} at site {namespace_of_interest}")
-        vlan_at_site, vlan_resp = utils.find_vlan_at_site(expected_vlan, namespace_of_interest)
+        vlan_at_site, vlan_resp = utils.find_vlan_at_site(
+            expected_vlan, namespace_of_interest
+        )
         if vlan_at_site:
             print(f"\tVlan {expected_vlan} is Configured!")
         else:
@@ -187,7 +211,7 @@ def main():
             print(f"\tSite Configuration deviates from Design!")
             missing_vlans.append(expected_vlan)
 
-    payload_dict.update({'missing_vlans': missing_vlans})
+    payload_dict.update({"missing_vlans": missing_vlans})
 
     # Use the "render in one" utility function
     template_file = "design_vs_implementation_report_template.j2"
@@ -206,12 +230,19 @@ def main():
 
 
 # Standard call to the main() function.
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Script Description",
-                                     epilog="Usage: ' python test1.py' ")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script Description", epilog="Usage: ' python test1.py' "
+    )
 
     # parser.add_argument('all', help='Execute all exercises in week 4 assignment')
-    parser.add_argument('-k', '--kind', help='Specify the kind for client.all', action='store',default="InfraVLAN")
+    parser.add_argument(
+        "-k",
+        "--kind",
+        help="Specify the kind for client.all",
+        action="store",
+        default="InfraVLAN",
+    )
 
     parser.add_argument(
         "-o",

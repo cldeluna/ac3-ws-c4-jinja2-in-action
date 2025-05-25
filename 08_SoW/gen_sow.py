@@ -54,7 +54,7 @@ def main():
         print(
             "ERROR! Cannot connect to SuzieQ API. Please check server and connectivity."
         )
-        print('Will use local copy of SuzieQ data.')
+        print("Will use local copy of SuzieQ data.")
 
     # Date stamp for Report if one already exists
     file_timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -71,13 +71,13 @@ def main():
     sow.update({"location": namespace})
     sow.update({"extdb": extdb_table})
     sow.update({"timestamp": human_readable})
-    
+
     # Initialize the response list of dictionaries variable
     resp_lod = list()
     if not sq_health_check or arguments.local:
         # In case SuzieQ is not available, use local payload from SuzieQ
         file_path = "gdl_new_ap_cabling.csv"
-        with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
+        with open(file_path, mode="r", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             resp_lod = [row for row in reader]
     else:
@@ -128,7 +128,6 @@ if __name__ == "__main__":
         description="Script Description",
         epilog="Usage: 'uv run gen_sow.py' or python gen_sow.py' Tip: Use python (rather than uv run) if you have activated your virtual environment manualy'   ",
     )
-
 
     parser.add_argument(
         "-o",
