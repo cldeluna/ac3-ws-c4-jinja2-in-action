@@ -2,7 +2,7 @@
 
 This showcases how Jinja2 templates are part of a larger ecosystem.  I believe you will see more and more of this as tools evolve.
 
-Here you will need to focus on the template (probably) and the payload to send to the template.  Instantiating the environment will be done by the tool.
+Here you will need to focus on the template and the payload to send to the template.  Instantiating the environment will be done by the tool.
 
 ```bash
 % tree
