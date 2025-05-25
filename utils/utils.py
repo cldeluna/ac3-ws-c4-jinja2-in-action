@@ -635,7 +635,7 @@ def try_sq_rest_call(uri_path: str, url_options: str, debug: Any = False) -> Any
     API_ACCESS_TOKEN = os.getenv("SQ_API_TOKEN")
     API_ENDPOINT = "ac3-suzieq.cloudmylab.net"
 
-    url = f"http://{API_ENDPOINT}:8443{uri_path}?{url_options}"
+    url = f"https://{API_ENDPOINT}:8443{uri_path}?{url_options}"
 
     payload = "\r\n"
     headers = {
