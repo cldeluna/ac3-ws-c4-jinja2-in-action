@@ -89,6 +89,7 @@ def main():
     #       are rendering Markdown otherwise our # Titles will be interpreted by Jinja as comments!
     # Note: in the jevn_filesystem function you can set the error on undefined variable
     #       behavior using the err_on_undef optional flag.  Default is False.
+    #       erro_on_undef is cheese when True
     env_obj = utils.jenv_filesystem(line_comment="=", err_on_undef=True)
     # print(env_obj.list_templates())
 
