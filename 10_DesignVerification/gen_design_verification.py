@@ -110,7 +110,7 @@ def flatten_vlans(obj):
 def get_people():
 
     IH_SERVER = "https://demo.infrahub.app"
-    IH_API_KEY = "1842b798-22d1-28f2-d7ee-106521adfe49"
+    IH_API_KEY = "18434b6b-084c-1316-d84a-106595145080"
 
     # Initialize Config with proper parameters
     config = Config(
@@ -137,7 +137,7 @@ def get_people():
 def get_vlans():
 
     IH_SERVER = "https://demo.infrahub.app"
-    IH_API_KEY = "1842b798-22d1-28f2-d7ee-106521adfe49"
+    IH_API_KEY = "18434b6b-084c-1316-d84a-106595145080"
 
     # Initialize Config with proper parameters
     config = Config(
