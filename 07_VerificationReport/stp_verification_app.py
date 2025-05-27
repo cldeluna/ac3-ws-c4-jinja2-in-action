@@ -240,8 +240,9 @@ def main():
 
             rpt_dict.update({"header_summary": header_summary})
 
-            # Template stp_verification_template.j2
+            # Actual Template stp_verification_template.j2
             # template = "stp_verification_template.j2"
+            # This other template is cheese
             template = "other_template_var.j2"
 
             # Define the filename

@@ -69,7 +69,7 @@ def main():
     # Here we are adding the appropriate diagram image to the payload dictionary
     payload_dict.update({"diagram": img})
 
-    # Update the payload dictionary we will send to the template with the human readable timestamp
+    # Update the payload dictionary we will send to the template with the human readable timestamp with cheese
     payload_dict.update({"dattim": human_readabl})
 
     # Get Gateway
@@ -95,7 +95,7 @@ def main():
     # ADD DEBUGGING Just In Case
     env_obj.add_extension("jinja2.ext.debug")
 
-    # LOAD TEMPLATE
+    # LOAD TEMPLATE with cheese
     template_obj = utils.load_jtemplate(
         env_obj, template_file_name="installation_procedure_md_templat.j2"
     )
