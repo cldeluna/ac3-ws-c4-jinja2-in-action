@@ -55,6 +55,13 @@ We calculate the number of user interfaces based on the model number so we know 
 
 Full disclosure:  I've cheated here as this template assumes all the user interfaces are the same so the range command can be used.  In real life, you often have specific configurations, if only vlans, for each interface.
 
+Staring out:
+```
+% uv run gen_monolithic_sw_cfg_scaffold.py
+```
+
+When you finish (and if you rename your file to remove *_scaffold*)
+
 ```bash
 % uv run gen_monolithic_sw_cfg.py 
 
